@@ -141,7 +141,7 @@ The `ResizableIconButton` class extends `QPushButton` in PyQt5 to create a butto
 
 1. **Clone the Repository:**
 ```
-git clone [(https://github.com/chinmaykrishnroy/QTube.git)](https://github.com/chinmaykrishnroy/QTube)
+git clone https://github.com/chinmaykrishnroy/QTube.git
 cd QTube
 ```
 2. **Activate the Virtual Environment (venv):**

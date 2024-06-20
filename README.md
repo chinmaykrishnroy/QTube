@@ -4,18 +4,25 @@ QTube is a comprehensive YouTube downloader with a modern GUI, featuring an inte
 
 ## Features
 
+## Features
+
 - **YouTube Downloader**: Easily download videos from YouTube with a user-friendly interface.
+- **High-Resolution Video Download**: Supports downloading YouTube videos in resolutions up to 8K or 12K if available, ensuring users can access the highest quality video content when possible.
 - **Integrated Media Player**: Play downloaded videos or other media files directly within the application.
 - **Multithreading**: Ensures smooth performance and responsive user experience.
+- **Drag-and-Drop Support**: Enables users to drag and drop files for playback or add links to download videos and playlists.
+- **Dockable Media Player**: Allows users to dock and undock the media player window, providing flexibility in managing video playback space.
 - **Media Management**: Organize and manage your media library with ease.
+- **Continuous Scanning**: Continuously scans the directory for changes.
 - **Customizable Playback**: Control playback speed, volume, and seek within media files.
-- **History Tracking**: Keeps a record of played media and their playback states.
+- **Application State Persistence**: Automatically saves the application state, including settings, playlists, and playback history, into a JSON file before closing. This allows users to resume their activities seamlessly when reopening the application.
+- **Theme Toggle**: Includes a toggle button to switch between light and dark themes, providing users with customizable visual preferences.
+- **History Tracking**: Keeps a record of downloaded media with other meta information.
 - **Fullscreen Video Playback**: Enjoy videos in fullscreen mode with easy toggling.
-- **Playback Controls**: Includes play, pause, stop, next, previous, seek, and volume control functionalities.
+- **Playback Controls**: Includes play, pause, stop, next, previous, seek, repeat, shuffle, and volume control functionalities.
 - **Playlist Support**: Create and manage playlists for seamless media playback.
-- **Repeat and Shuffle**: Toggle repeat and shuffle modes for personalized listening experiences.
-- **Volume Control**: Mute, unmute, and adjust volume levels.
-- **Media Notifications**: Provides notifications for various media states and actions.
+- **Push Notifications**: Provides notifications for various states and actions.
+- **Rich Keyboard Events**: Utilizes comprehensive keyboard shortcuts for controlling various aspects of the application, enhancing accessibility and user interaction efficiency.
 
 MainWindow UI
 

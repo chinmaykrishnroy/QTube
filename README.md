@@ -5,13 +5,12 @@ QTube is a comprehensive YouTube downloader with a modern GUI, featuring an inte
 ## Images
 
 ![Screenshot 2024-06-20 112503](https://github.com/chinmaykrishnroy/QTube/assets/65699140/bf527d65-fd53-4c8c-8fa2-5da5f0fd535a)
+![Screenshot 2024-06-20 114852](https://github.com/chinmaykrishnroy/QTube/assets/65699140/c27cb37e-3b5e-46bf-9719-1b645f185826)
+![Screenshot 2024-06-20 114946](https://github.com/chinmaykrishnroy/QTube/assets/65699140/f211a801-05c8-4eb8-a7b6-0b4c5c96bc7f)
 ![Screenshot 2024-06-20 112527](https://github.com/chinmaykrishnroy/QTube/assets/65699140/246a6940-501d-418f-bdc3-7d1463393a22)
 ![Screenshot 2024-06-20 113254](https://github.com/chinmaykrishnroy/QTube/assets/65699140/8cd0d934-1a96-4b14-971b-58f68d3a6d97)
 ![Screenshot 2024-06-20 113500](https://github.com/chinmaykrishnroy/QTube/assets/65699140/c4e3eb19-db31-45c4-a3e7-7febfb0fddf9)
 ![Screenshot 2024-06-20 114800](https://github.com/chinmaykrishnroy/QTube/assets/65699140/44e85d3f-ebe6-497b-b9a6-361fc7dcbe74)
-![Screenshot 2024-06-20 114852](https://github.com/chinmaykrishnroy/QTube/assets/65699140/c27cb37e-3b5e-46bf-9719-1b645f185826)
-![Screenshot 2024-06-20 114946](https://github.com/chinmaykrishnroy/QTube/assets/65699140/f211a801-05c8-4eb8-a7b6-0b4c5c96bc7f)
-
 
 ## Features
 

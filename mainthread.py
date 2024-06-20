@@ -477,7 +477,7 @@ class MainWindow(QMainWindow):
             self.ui.folderSelectBtn.setText("Directory Updated")
             QTimer.singleShot(self.label_timeout, lambda: self.ui.folderSelectBtn.setText("Folder Selector"))
             self.pushNotification("Directory updated to '%s'." % self.default_download_directory)
-            self.file_watcher_system = FileWatcherSystem(self.default_download_directory)
+            self.file_watcher_system = FileWatcherSystem(self.default_download_directory, self)
             self.file_watcher_system.files_changed.connect(self.updateFiles)
 
     def searchVideos(self):

@@ -510,7 +510,6 @@ class MainWindow(QMainWindow):
 
     def handlefilePlayBtnClick(self, path):
         print("Clicked on: ", path)
-        if self.ui.mainAppStack.currentIndex() != 4: self.ui.mainAppStack.setCurrentIndex(4)
         self.media_player.play_media_from_path(path)
 
     def handleDownloadBtnClick(self, id, title):
@@ -647,6 +646,7 @@ class MainWindow(QMainWindow):
                     self.media_player.select_new_folder(local_path)
                 elif any(local_path.endswith(ext) for ext in
                          self.media_player.mainwindow.audio_formats + self.media_player.mainwindow.video_formats):
+                    self.ui.mainAppStack.setCurrentIndex(4)
                     self.media_player.play_media_from_path(local_path)
         if text:
             youtube_url_pattern = re.compile(r'^(https?://)?(www\.)?(youtube\.com|youtu\.?be)/.+$')

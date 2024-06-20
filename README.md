@@ -23,7 +23,7 @@ This project implements the main user interface (UI) for a multimedia downloader
 
 ### MainThread
 
-The MainWindow class in this PyQt5 application orchestrates a comprehensive multimedia management interface. It inherits from QMainWindow and integrates various features and functionalities. Upon initialization, it sets up the UI defined in Ui_MainWindow, configures window flags for a frameless appearance, and initializes several default settings and variables related to playback, file management, and UI state. Key components include a media player (MediaPlayer), file watching system (FileWatcherSystem), history manager (HistoryManager), and internet checker (InternetChecker). Signals and slots are extensively utilized for updating UI elements dynamically and handling user interactions, such as toggling sidebar visibility, managing download actions, updating file lists, and controlling multimedia playback. The class supports drag-and-drop functionality for local file playback and integrates web browser redirections for external links. Notably, it includes state management methods (loadState, saveState) for persisting user preferences and application settings. Overall, MainWindow encapsulates a robust multimedia application interface with responsive user controls and integrated multimedia handling capabilities
+The `MainWindow` class in this PyQt5 application orchestrates a comprehensive multimedia management interface. It inherits from QMainWindow and integrates various features and functionalities. Upon initialization, it sets up the UI defined in Ui_MainWindow, configures window flags for a frameless appearance, and initializes several default settings and variables related to playback, file management, and UI state. Key components include a media player (MediaPlayer), file watching system (FileWatcherSystem), history manager (HistoryManager), and internet checker (InternetChecker). Signals and slots are extensively utilized for updating UI elements dynamically and handling user interactions, such as toggling sidebar visibility, managing download actions, updating file lists, and controlling multimedia playback. The class supports drag-and-drop functionality for local file playback and integrates web browser redirections for external links. Notably, it includes state management methods (loadState, saveState) for persisting user preferences and application settings. Overall, MainWindow encapsulates a robust multimedia application interface with responsive user controls and integrated multimedia handling capabilities
 
 - **Frameless Window Design**: Utilizes `Qt.FramelessWindowHint` to create a modern and sleek user interface.
 - **Multimedia Playback**: Integrates MediaPlayer for local media playback and manages playback controls such as play, pause, stop, and volume adjustment.
@@ -38,7 +38,7 @@ The MainWindow class in this PyQt5 application orchestrates a comprehensive mult
 
 ### Interface
 
-The Ui_MainWindow class in this PyQt5 application serves as the central hub for a multimedia downloader and player interface. It orchestrates a rich set of features, beginning with a responsive menu toggle button that controls the visibility of the menu bar. The class dynamically manages video containers populated with thumbnails and duration labels, facilitating intuitive video browsing. Download functionality is robust, allowing users to initiate downloads with customizable video resolutions, while progress indicators and real-time internet speed updates enhance user feedback during downloads. A comprehensive history display chronicles downloaded items, providing details such as title, URL, elapsed time, and storage location. File management capabilities include playback controls and detailed metadata (size, type, modification time) for listed files. Error handling mechanisms ensure users are promptly notified of download errors, while resume and pause functionalities add flexibility to ongoing downloads. Overall, the Ui_MainWindow class seamlessly integrates PyQt5 widgets and custom components to deliver a user-friendly interface for multimedia management and playback.
+The `Ui_MainWindow` class in this PyQt5 application serves as the central hub for a multimedia downloader and player interface. It orchestrates a rich set of features, beginning with a responsive menu toggle button that controls the visibility of the menu bar. The class dynamically manages video containers populated with thumbnails and duration labels, facilitating intuitive video browsing. Download functionality is robust, allowing users to initiate downloads with customizable video resolutions, while progress indicators and real-time internet speed updates enhance user feedback during downloads. A comprehensive history display chronicles downloaded items, providing details such as title, URL, elapsed time, and storage location. File management capabilities include playback controls and detailed metadata (size, type, modification time) for listed files. Error handling mechanisms ensure users are promptly notified of download errors, while resume and pause functionalities add flexibility to ongoing downloads. Overall, the Ui_MainWindow class seamlessly integrates PyQt5 widgets and custom components to deliver a user-friendly interface for multimedia management and playback.
 
 - **Menu and Toggle Button**: Includes a menu toggle button with an icon for toggling the menu bar visibility.
 - **Video Management**: Dynamically adds video containers with thumbnails and duration labels based on provided video data.
@@ -130,6 +130,52 @@ The `ResizableIconButton` class extends `QPushButton` in PyQt5 to create a butto
 6. **Organize Media**: Add media files to the playlist and manage your media library.
 7. **Track History**: Access the download history to see previously downloaded media and mediaplayer states.
 
-   
-   
-   
+## Installation
+
+### Prerequisites
+
+- Python 3.x installed on your system.
+- Ensure you have the `venv` module available for managing virtual environments.
+
+### Installation Steps
+
+1. **Clone the Repository:**
+```
+git clone [(https://github.com/chinmaykrishnroy/QTube.git)](https://github.com/chinmaykrishnroy/QTube)
+cd QTube
+```
+2. **Activate the Virtual Environment (venv):**
+If using Windows, run:
+```
+venv\Scripts\activate
+```
+If using macOS or Linux, run:
+```
+source venv/bin/activate
+```
+3. **Run the Application:**
+Execute the run script to start QTube:
+```
+run.bat
+```
+4. **Usage:**
+- **Download YouTube Videos:** Use the YouTube downloader feature to download videos.
+- **Play Media:** Utilize the integrated media player to play downloaded videos or other media files.
+- **Manage Playback:** Adjust volume, seek within media files, and toggle fullscreen mode as needed.
+- **Organize Media:** Add media files to playlists and manage your media library.
+- **Track History:** Access the download history to view previously downloaded media and their playback states.
+
+5. **Close the Application:**
+To exit QTube, simply close the application window or use any provided exit functionality within the UI.
+
+## Troubleshooting
+
+- **Dependency Errors:** If encountering dependency issues, ensure that Python 3.x and the `venv` module are correctly installed and activated.
+
+## Contributing
+
+Contributions to QTube are welcome! Fork the repository, make your changes, and submit a pull request detailing your modifications.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).

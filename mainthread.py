@@ -17,6 +17,7 @@ from internetcheckerthread import InternetChecker, SignalEmitter
 from mediaplayerthread import MediaPlayer
 from searchthread import SearchThread
 
+
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -45,19 +46,24 @@ class MainWindow(QMainWindow):
         self.notification_popup_timeout = 5000
         # self.default_download_directory = "%s\\Downloads"%os.getcwd()
         self.app_directory = os.getcwd()
-        self.ui.videoExtensionComboBox.setCurrentIndex(self.default_video_extension_index)
+        self.ui.videoExtensionComboBox.setCurrentIndex(
+            self.default_video_extension_index)
         self.default_video_extension = self.ui.videoExtensionComboBox.currentText()
-        self.ui.audioExtensionComboBox.setCurrentIndex(self.default_audio_extension_index)
+        self.ui.audioExtensionComboBox.setCurrentIndex(
+            self.default_audio_extension_index)
         self.default_audio_extension = self.ui.audioExtensionComboBox.currentText()
-        self.ui.defaultVolumeComboBox.setCurrentIndex(self.default_volume_index)
+        self.ui.defaultVolumeComboBox.setCurrentIndex(
+            self.default_volume_index)
         self.default_volume = int(self.ui.defaultVolumeComboBox.currentText())
         self.ui.playbackSpeedCombobox.setCurrentIndex(2)
-        self.playback_speed = float(self.ui.playbackSpeedCombobox.currentText().replace('x', ''))
+        self.playback_speed = float(
+            self.ui.playbackSpeedCombobox.currentText().replace('x', ''))
         self.ui.filesSortComboBox.setCurrentIndex(self.default_sort_index)
         self.file_sorting_key = str(self.ui.filesSortComboBox.currentText())
         self.video_formats = [".webm", ".mp4", ".avi", ".mkv", ".mov", ".wmv", ".flv", "mpeg", ".3gp", ".mts", ".ts",
                               ".vob"]
-        self.audio_formats = [".mp3", ".wav", ".aac", ".m4a", ".flac", ".ogg", ".wma"]
+        self.audio_formats = [".mp3", ".wav",
+                              ".aac", ".m4a", ".flac", ".ogg", ".wma"]
         self.animation_time = 150
         self.label_timeout = 2500
         # self.dark_theme = True
@@ -91,14 +97,16 @@ class MainWindow(QMainWindow):
             "Popular Computer Documentary"
         ]
 
-        self.file_watcher_system = FileWatcherSystem(self.default_download_directory, self)
+        self.file_watcher_system = FileWatcherSystem(
+            self.default_download_directory, self)
         self.file_watcher_system.files_changed.connect(self.updateFiles)
 
         self.history_manager = HistoryManager(self.app_directory)
         self.history_list = self.history_manager.get_history()
 
         self.signal_emitter = SignalEmitter()
-        self.signal_emitter.connection_status_changed.connect(self.updateInternetStatus)
+        self.signal_emitter.connection_status_changed.connect(
+            self.updateInternetStatus)
 
         self.internet_checker = InternetChecker(self.signal_emitter)
         self.internet_checker.start()
@@ -114,15 +122,18 @@ class MainWindow(QMainWindow):
         self.dots_timer.timeout.connect(self.updateDots)
         self.dots_timer.start(500)
 
-        self.sideBarAnimation = QPropertyAnimation(self.ui.leftMenuContainer, b"minimumWidth")
+        self.sideBarAnimation = QPropertyAnimation(
+            self.ui.leftMenuContainer, b"minimumWidth")
         self.sideBarAnimation.setDuration(self.animation_time)
         self.sideBarAnimation.setEasingCurve(QEasingCurve.InOutExpo)
 
-        self.settingHelpAnimation = QPropertyAnimation(self.ui.centerMenuContainer, b"minimumWidth")
+        self.settingHelpAnimation = QPropertyAnimation(
+            self.ui.centerMenuContainer, b"minimumWidth")
         self.settingHelpAnimation.setDuration(int(0.5 * self.animation_time))
         self.settingHelpAnimation.setEasingCurve(QEasingCurve.Linear)
 
-        self.notificationAnimation = QPropertyAnimation(self.ui.notificationWiget, b"minimumHeight")
+        self.notificationAnimation = QPropertyAnimation(
+            self.ui.notificationWiget, b"minimumHeight")
         self.notificationAnimation.setDuration(int(1.75 * self.animation_time))
         self.notificationAnimation.setEasingCurve(QEasingCurve.InOutBack)
 
@@ -138,14 +149,19 @@ class MainWindow(QMainWindow):
         self.ui.closeHelpMenuBtn.clicked.connect(self.hidesettingHelpMenu)
         self.ui.settingsBtn.clicked.connect(self.showSettingMenu)
         self.ui.helpBtn.clicked.connect(self.showHelpMenu)
-        self.ui.filesSortComboBox.currentIndexChanged.connect(self.updateFilesWithNewSortingMethod)
+        self.ui.filesSortComboBox.currentIndexChanged.connect(
+            self.updateFilesWithNewSortingMethod)
         self.ui.forceRescanBtn.clicked.connect(self.refreshFiles)
         self.ui.randInitBtn.clicked.connect(self.toggleInitialRandomSearch)
         self.ui.appSoundBtn.clicked.connect(self.handleAppSound)
-        self.ui.folderSelectBtn.clicked.connect(self.selectDefaultDownloadDirectory)
-        self.ui.videoExtensionComboBox.currentIndexChanged.connect(self.updateDefaultVideoExtension)
-        self.ui.audioExtensionComboBox.currentIndexChanged.connect(self.updateDefaultAudioExtension)
-        self.ui.defaultVolumeComboBox.currentIndexChanged.connect(self.updateDefaultVolume)
+        self.ui.folderSelectBtn.clicked.connect(
+            self.selectDefaultDownloadDirectory)
+        self.ui.videoExtensionComboBox.currentIndexChanged.connect(
+            self.updateDefaultVideoExtension)
+        self.ui.audioExtensionComboBox.currentIndexChanged.connect(
+            self.updateDefaultAudioExtension)
+        self.ui.defaultVolumeComboBox.currentIndexChanged.connect(
+            self.updateDefaultVolume)
         self.ui.searchBtn.clicked.connect(self.searchVideos)
         self.ui.darkModeBtn.clicked.connect(self.toggleTheme)
         self.ui.themeBtn.clicked.connect(self.toggleTheme)
@@ -174,7 +190,8 @@ class MainWindow(QMainWindow):
                 }
                 video_info_list.append(video_element)
             self.ui.addVideos(video_info_list, self)
-        QTimer.singleShot(2000, lambda: self.ui.mainAppStack.setCurrentIndex(self.current_stack))
+        QTimer.singleShot(
+            2000, lambda: self.ui.mainAppStack.setCurrentIndex(self.current_stack))
 
     def updateDots(self):
         if len(self.dots) < 3:
@@ -185,7 +202,8 @@ class MainWindow(QMainWindow):
         self.ui.initLabel.setText(f"Initializing{self.dots}")
 
     def initMediaPlayer(self):
-        self.media_files = [d['path'] for d in self.default_files if 'path' in d]
+        self.media_files = [d['path']
+                            for d in self.default_files if 'path' in d]
         self.media_player = MediaPlayer(self.ui, self)
         self.media_player.start()
 
@@ -195,7 +213,8 @@ class MainWindow(QMainWindow):
     def playSound(self, path, volume=15):
         if self.sound_enabled:
             try:
-                self.soundPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(path)))
+                self.soundPlayer.setMedia(
+                    QMediaContent(QUrl.fromLocalFile(path)))
                 self.soundPlayer.setVolume(volume)
                 self.soundPlayer.play()
             except Exception as e:
@@ -250,7 +269,8 @@ class MainWindow(QMainWindow):
     def refreshFiles(self):
         self.file_watcher_system.stop()
         self.file_watcher_system.deleteLater()
-        self.file_watcher_system = FileWatcherSystem(self.default_download_directory, self)
+        self.file_watcher_system = FileWatcherSystem(
+            self.default_download_directory, self)
         self.file_watcher_system.files_changed.connect(self.updateFiles)
         self.pushNotification('Files Refreshed')
 
@@ -290,12 +310,17 @@ class MainWindow(QMainWindow):
         self.left_menu_container_visible ^= True
         self.playSound('sound/tap2.mp3')
         if self.left_menu_container_visible:
-            self.sideBarAnimation.setStartValue(self.ui.leftMenuContainer.width())
-            self.sideBarAnimation.setEndValue(self.left_menu_container_max_width)
+            self.sideBarAnimation.setStartValue(
+                self.ui.leftMenuContainer.width())
+            self.sideBarAnimation.setEndValue(
+                self.left_menu_container_max_width)
         else:
-            self.sideBarAnimation.setStartValue(self.ui.leftMenuContainer.width())
-            self.sideBarAnimation.setEndValue(self.left_menu_container_min_width)
-            self.ui.leftMenuContainer.setMaximumWidth(self.left_menu_container_min_width)
+            self.sideBarAnimation.setStartValue(
+                self.ui.leftMenuContainer.width())
+            self.sideBarAnimation.setEndValue(
+                self.left_menu_container_min_width)
+            self.ui.leftMenuContainer.setMaximumWidth(
+                self.left_menu_container_min_width)
         self.sideBarAnimation.start()
 
     def hidesettingHelpMenu(self):
@@ -316,7 +341,8 @@ class MainWindow(QMainWindow):
             self.setting_menu_visible = True
             self.help_menu_visible = False
         elif self.setting_menu_visible:
-            self.settingHelpAnimation.setStartValue(self.ui.centerMenuContainer.width())
+            self.settingHelpAnimation.setStartValue(
+                self.ui.centerMenuContainer.width())
             self.settingHelpAnimation.setEndValue(0)
             self.settingHelpAnimation.start()
             self.ui.centerMenuSubContainer.hide()
@@ -341,7 +367,8 @@ class MainWindow(QMainWindow):
             self.help_menu_visible = True
             self.setting_menu_visible = False
         elif self.help_menu_visible:
-            self.settingHelpAnimation.setStartValue(self.ui.centerMenuContainer.width())
+            self.settingHelpAnimation.setStartValue(
+                self.ui.centerMenuContainer.width())
             self.settingHelpAnimation.setEndValue(0)
             self.settingHelpAnimation.start()
             self.ui.centerMenuSubContainer.hide()
@@ -359,21 +386,25 @@ class MainWindow(QMainWindow):
 
     def enableNotification(self):
         if self.allow_notification_popups:
-            self.ui.notificationBtn.setIcon(QIcon(':/icons/icons/cil-volume-off.png'))
+            self.ui.notificationBtn.setIcon(
+                QIcon(':/icons/icons/cil-volume-off.png'))
             self.pushNotification("Notification turned off!")
             self.allow_notification_popups = False
         else:
             self.allow_notification_popups = True
-            self.ui.notificationBtn.setIcon(QIcon(':/icons/icons/cil-bell.png'))
+            self.ui.notificationBtn.setIcon(
+                QIcon(':/icons/icons/cil-bell.png'))
             self.pushNotification("Notification turned on!")
 
     def updateDefaultVideoExtension(self, index):
         self.default_video_extension = self.ui.videoExtensionComboBox.currentText()
-        self.pushNotification("Changed default video extension to '%s' !" % self.default_video_extension)
+        self.pushNotification(
+            "Changed default video extension to '%s' !" % self.default_video_extension)
 
     def updateDefaultAudioExtension(self, index):
         self.default_audio_extension = self.ui.audioExtensionComboBox.currentText()
-        self.pushNotification("Changed default audio extension to '%s' !" % self.default_audio_extension)
+        self.pushNotification(
+            "Changed default audio extension to '%s' !" % self.default_audio_extension)
 
     def pushNotification(self, notification_message, notification_volume=25, tone=True):
         self.ui.notificationFrame.hide()
@@ -385,11 +416,14 @@ class MainWindow(QMainWindow):
             self.notificationAnimation.start()
             self.ui.notificationLabel.setMaximumHeight(49)
             self.ui.notificationLabel.setText(notification_message)
-            QTimer.singleShot(int(1.5 * self.animation_time), lambda: self.ui.notificationFrame.show())
-            QTimer.singleShot(int(self.notification_popup_timeout), self.hideNotificationTab)
+            QTimer.singleShot(int(1.5 * self.animation_time),
+                              lambda: self.ui.notificationFrame.show())
+            QTimer.singleShot(
+                int(self.notification_popup_timeout), self.hideNotificationTab)
 
     def hideNotificationTab(self):
-        self.notificationAnimation.setStartValue(self.ui.notificationWiget.height())
+        self.notificationAnimation.setStartValue(
+            self.ui.notificationWiget.height())
         self.notificationAnimation.setEndValue(0)
         self.notificationAnimation.start()
         self.ui.notificationLabel.setText("")
@@ -432,7 +466,8 @@ class MainWindow(QMainWindow):
         try:
             with open(theme_path, "r") as file:
                 self.setStyleSheet(file.read())
-            self.initGif = QMovie(u":/gif/catDark.gif" if theme_path == "themes/dark.theme" else u":/gif/catLight.gif")
+            self.initGif = QMovie(u":/gif/catDark.gif" if theme_path ==
+                                  "themes/dark.theme" else u":/gif/catLight.gif")
             self.ui.initIcon.setMovie(self.initGif)
             self.ui.loadingIcon.setMovie(self.initGif)
             self.initGif.start()
@@ -445,7 +480,8 @@ class MainWindow(QMainWindow):
 
     def updateDefaultVolume(self, index):
         self.default_volume = self.ui.defaultVolumeComboBox.currentText()
-        self.pushNotification("Default Media Volume Changed to '%s'." % self.default_volume)
+        self.pushNotification(
+            "Default Media Volume Changed to '%s'." % self.default_volume)
 
     def toggleTheme(self):
         self.dark_theme ^= True
@@ -468,16 +504,20 @@ class MainWindow(QMainWindow):
         self.initGif.start()
 
     def selectDefaultDownloadDirectory(self):
-        directory = QFileDialog.getExistingDirectory(self, "Select Default Folder", "")
+        directory = QFileDialog.getExistingDirectory(
+            self, "Select Default Folder", "")
         if directory:
             self.default_download_directory = directory
             self.file_watcher_system.stop()
             self.file_watcher_system.deleteLater()
             print("Selected directory:", self.default_download_directory)
             self.ui.folderSelectBtn.setText("Directory Updated")
-            QTimer.singleShot(self.label_timeout, lambda: self.ui.folderSelectBtn.setText("Folder Selector"))
-            self.pushNotification("Directory updated to '%s'." % self.default_download_directory)
-            self.file_watcher_system = FileWatcherSystem(self.default_download_directory, self)
+            QTimer.singleShot(
+                self.label_timeout, lambda: self.ui.folderSelectBtn.setText("Folder Selector"))
+            self.pushNotification("Directory updated to '%s'." %
+                                  self.default_download_directory)
+            self.file_watcher_system = FileWatcherSystem(
+                self.default_download_directory, self)
             self.file_watcher_system.files_changed.connect(self.updateFiles)
 
     def searchVideos(self):
@@ -486,9 +526,11 @@ class MainWindow(QMainWindow):
             if query:
                 self.startVideoSearch(query)
             else:
-                self.pushNotification("Type Something in Search Box, Query Can't be Blank!")
+                self.pushNotification(
+                    "Type Something in Search Box, Query Can't be Blank!")
         else:
-            self.pushNotification("No Internet! Connect to Stable Internet Connection.")
+            self.pushNotification(
+                "No Internet! Connect to Stable Internet Connection.")
 
     def startVideoSearch(self, query):
         if self.internet_connected:
@@ -498,7 +540,8 @@ class MainWindow(QMainWindow):
             self.search_thread.search_finished.connect(self.addVideo)
             self.search_thread.start()
         else:
-            self.pushNotification("No Internet! Connect to Stable Internet Connection.")
+            self.pushNotification(
+                "No Internet! Connect to Stable Internet Connection.")
 
     def addVideo(self, file_info_list):
         self.ui.searchBtn.setEnabled(True)
@@ -524,7 +567,8 @@ class MainWindow(QMainWindow):
         except Exception as e:
             self.ui.stopImageDownloaderThreads()
             print("Can't add to download due to exception:  ", e)
-            self.pushNotification(f"Can't add to download due to exception: {e}")
+            self.pushNotification(
+                f"Can't add to download due to exception: {e}")
 
     def handleThumbnailBtnClick(self, id, title):
         print("Thumbnail Button video ID: ", id, "video Title: ", title)
@@ -538,7 +582,8 @@ class MainWindow(QMainWindow):
         except Exception as e:
             self.ui.stopImageDownloaderThreads()
             print("Can't add to download due to exception:  ", e)
-            self.pushNotification(f"Can't add to download due to exception: {e}")
+            self.pushNotification(
+                f"Can't add to download due to exception: {e}")
 
     def handleStreamBtnClick(self, id, title):
         print("Stream Button video ID: ", id, "video Title: ", title)
@@ -585,26 +630,35 @@ class MainWindow(QMainWindow):
         try:
             with open('app_state.json', 'r') as f:
                 state = json.load(f)
-                self.sound_enabled = state.get('sound_enabled', default_sound_enabled)
+                self.sound_enabled = state.get(
+                    'sound_enabled', default_sound_enabled)
                 self.allow_notification_popups = state.get('allow_notification_popups',
                                                            default_allow_notification_popups)
-                self.default_download_directory = state.get('default_download_directory', default_download_directory)
+                self.default_download_directory = state.get(
+                    'default_download_directory', default_download_directory)
                 self.dark_theme = state.get('dark_theme', default_dark_theme)
                 self.allow_random_initial_query = state.get('allow_random_initial_query',
                                                             default_allow_random_initial_query)
-                self.current_stack = state.get('current_stack', default_initial_stack)
-                self.current_volume = state.get('current_volume', current_volume)
-                self.default_volume_index = state.get('default_volume_index', default_volume_index)
-                self.default_sort_index = state.get('default_sort_index', default_sort_index)
+                self.current_stack = state.get(
+                    'current_stack', default_initial_stack)
+                self.current_volume = state.get(
+                    'current_volume', current_volume)
+                self.default_volume_index = state.get(
+                    'default_volume_index', default_volume_index)
+                self.default_sort_index = state.get(
+                    'default_sort_index', default_sort_index)
                 self.default_audio_extension_index = state.get('default_audio_extension_index',
                                                                default_audio_extension_index)
                 self.default_video_extension_index = state.get('default_video_extension_index',
                                                                default_video_extension_index)
-                self.left_menu_container_visible = state.get('left_menu_visible', True)
-                self.center_menu_container_visible = state.get('center_menu_visible', False)
+                self.left_menu_container_visible = state.get(
+                    'left_menu_visible', True)
+                self.center_menu_container_visible = state.get(
+                    'center_menu_visible', False)
                 self.width_ = state.get('width', width_)
                 self.height_ = state.get('height', height_)
-                self.logger_visible = state.get('logger_visible', logger_visible)
+                self.logger_visible = state.get(
+                    'logger_visible', logger_visible)
         except FileNotFoundError:
             self.left_menu_container_visible = left_menu_visible
             self.center_menu_container_visible = center_menu_visible
@@ -623,14 +677,20 @@ class MainWindow(QMainWindow):
             self.width_ = width_
             self.height_ = height_
         self.resize(self.width_, self.height_)
-        if not self.left_menu_container_visible: self.ui.leftMenuContainer.setMaximumWidth(
-            self.left_menu_container_min_width)
-        if self.center_menu_container_visible: self.ui.centerMenuSubContainer.show()
-        self.loadTheme("themes/dark.theme") if self.dark_theme else self.loadTheme("themes/light.theme")
-        self.ui.appSoundBtn.setText("Enabled" if self.sound_enabled else "Disabled")
+        if not self.left_menu_container_visible:
+            self.ui.leftMenuContainer.setMaximumWidth(
+                self.left_menu_container_min_width)
+        if self.center_menu_container_visible:
+            self.ui.centerMenuSubContainer.show()
+        self.loadTheme(
+            "themes/dark.theme") if self.dark_theme else self.loadTheme("themes/light.theme")
+        self.ui.appSoundBtn.setText(
+            "Enabled" if self.sound_enabled else "Disabled")
         self.ui.currentInfoLabel.show() if self.logger_visible else self.ui.currentInfoLabel.hide()
-        self.ui.loggerBtn.setText("Enabled" if self.logger_visible else "Disabled")
-        self.ui.randInitBtn.setText("Enabled" if self.allow_random_initial_query else "Disabled")
+        self.ui.loggerBtn.setText(
+            "Enabled" if self.logger_visible else "Disabled")
+        self.ui.randInitBtn.setText(
+            "Enabled" if self.allow_random_initial_query else "Disabled")
 
     def dragEnterEvent(self, event: QDragEnterEvent):
         if event.mimeData().hasUrls():
@@ -649,7 +709,8 @@ class MainWindow(QMainWindow):
                     self.ui.mainAppStack.setCurrentIndex(4)
                     self.media_player.play_media_from_path(local_path)
         if text:
-            youtube_url_pattern = re.compile(r'^(https?://)?(www\.)?(youtube\.com|youtu\.?be)/.+$')
+            youtube_url_pattern = re.compile(
+                r'^(https?://)?(www\.)?(youtube\.com|youtu\.?be)/.+$')
             if youtube_url_pattern.match(text):
                 self.ui.addDownload(text, text, self)
 
@@ -759,14 +820,16 @@ class MainWindow(QMainWindow):
 
     def toggleInitialRandomSearch(self):
         self.allow_random_initial_query = not self.allow_random_initial_query
-        self.ui.randInitBtn.setText("Enabled" if self.allow_random_initial_query else "Disabled")
+        self.ui.randInitBtn.setText(
+            "Enabled" if self.allow_random_initial_query else "Disabled")
         self.pushNotification(
             "Enabled Random Search Results Upon App Launch" if self.allow_random_initial_query else "Disabled Random Search Results Upon App Launch")
 
     def showKitten(self):
         self.ui.loadingLabel.hide()
         self.ui.mainAppStack.setCurrentIndex(1)
-        QTimer.singleShot(2000, lambda: self.ui.mainAppStack.setCurrentIndex(0))
+        QTimer.singleShot(
+            2000, lambda: self.ui.mainAppStack.setCurrentIndex(0))
         QTimer.singleShot(2000, lambda: self.ui.loadingLabel.show())
 
     def closeEvent(self, event):

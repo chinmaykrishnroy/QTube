@@ -21,7 +21,8 @@ class ResizableIconButton(QPushButton):
         if self.current_icon:
             pixmap = self.current_icon.pixmap(size)
             if not pixmap.isNull():
-                scaled_pixmap = pixmap.scaled(size, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+                scaled_pixmap = pixmap.scaled(
+                    size, Qt.KeepAspectRatio, Qt.SmoothTransformation)
                 super().setIcon(QIcon(scaled_pixmap))
                 self.setIconSize(size)
 

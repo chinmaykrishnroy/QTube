@@ -70,7 +70,8 @@ class FileWatcherSystem(QObject):
 
     def directory_changed(self, path):
         print(f"Directory changed: {path}")
-        self.mainwindow.ui.currentInfoLabel.setText(f"Directory changed: {path}")
+        self.mainwindow.ui.currentInfoLabel.setText(
+            f"Directory changed: {path}")
         self.scanner_thread.request_rescan()
 
     def file_changed(self, path):

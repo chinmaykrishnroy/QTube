@@ -22,7 +22,8 @@ def convert_size(size_bytes):
 
 def format_time(sec):
     try:
-        seconds, minutes, hours = (sec % 60), ((sec / 60) % 60), ((sec / (60 * 60)) % 24)
+        seconds, minutes, hours = (sec % 60), ((
+            sec / 60) % 60), ((sec / (60 * 60)) % 24)
     except:
         seconds, minutes, hours = 0, 0, 0
     if int(hours) > 0:
@@ -45,8 +46,10 @@ class DownloadThread(QThread):
         self._is_running = True
         self.format = self.getformat(type)
         self.mainwindow = mainwindow
-        self.extension = self.getextension(type, audio_extension, video_extension)
-        self.download_path = os.path.join(download_directory, '%(title)s.%(ext)s')
+        self.extension = self.getextension(
+            type, audio_extension, video_extension)
+        self.download_path = os.path.join(
+            download_directory, '%(title)s.%(ext)s')
 
     @staticmethod
     def getextension(type, audio_extension, video_extension):
@@ -74,7 +77,7 @@ class DownloadThread(QThread):
             return 'bestaudio[ext=m4a]/best[ext=mp3]/best'
 
     def run(self):
-        
+
         formatted_opts = {
             'format': self.format,
             'progress_hooks': [self.my_hook],
@@ -106,7 +109,8 @@ class DownloadThread(QThread):
                 ydl.download([self.id])
         except Exception as e:
             if self.mainwindow:
-                self.mainwindow.pushNotification(f"ERROR WHILE DOWNLOADING! Exception: {e}", 25)
+                self.mainwindow.pushNotification(
+                    f"ERROR WHILE DOWNLOADING! Exception: {e}", 25)
                 self.mainwindow.ui.currentInfoLabel.setText(f"ERROR! {e}")
             print("Download Error: ", e)
         self._is_running = False

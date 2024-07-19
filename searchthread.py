@@ -34,7 +34,8 @@ class SearchThread(QThread):
                 video_list.append(video_data)
         except Exception as e:
             print("Can't Search YouTube! ", e)
-            self.mainwindow.ui.currentInfoLabel.setText("Cant Reach Youtube! Exception: %s" % e)
+            self.mainwindow.ui.currentInfoLabel.setText(
+                "Cant Reach Youtube! Exception: %s" % e)
             video_list = []
             for _ in range(random.randint(9, 12)):
                 video_data = {

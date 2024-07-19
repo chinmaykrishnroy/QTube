@@ -17,7 +17,8 @@ class InternetChecker(threading.Thread):
             new_status = self.check_internet_connection()
             if new_status != self.connected_to_internet:
                 self.connected_to_internet = new_status
-                self.signal_emitter.connection_status_changed.emit(self.connected_to_internet)
+                self.signal_emitter.connection_status_changed.emit(
+                    self.connected_to_internet)
             time.sleep(3)
 
     def stop(self):

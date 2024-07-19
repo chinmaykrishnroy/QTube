@@ -265,6 +265,7 @@ class Ui_MainWindow(object):
         self.videoExtensionComboBox.addItem("")
         self.videoExtensionComboBox.addItem("")
         self.videoExtensionComboBox.addItem("")
+        self.videoExtensionComboBox.addItem("")
         self.videoExtensionComboBox.setObjectName(u"videoExtensionComboBox")
 
         self.verticalLayout_settingPageBtnsWidget.addWidget(self.videoExtensionComboBox)
@@ -275,6 +276,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_settingPageBtnsWidget.addWidget(self.settingAudioExtensionLabel)
 
         self.audioExtensionComboBox = QComboBox(self.settingPageBtnsWidget)
+        self.audioExtensionComboBox.addItem("")
         self.audioExtensionComboBox.addItem("")
         self.audioExtensionComboBox.addItem("")
         self.audioExtensionComboBox.addItem("")
@@ -1403,9 +1405,9 @@ class Ui_MainWindow(object):
     # setupUi
 
     def addVideos(self, videos, mainWindow):
-        self.downloadBtnMapsID = {}
-        self.downloadBtn2MapsID = {}
-        self.downloadBtnMapsTitle = {}
+        self.thumbnailBtnMapsID = {}
+        self.redirectBtnMapsID = {}
+        self.thumbnailBtnMapsTitle = {}
         self.streamBtnMapsID = {}
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -1587,10 +1589,10 @@ class Ui_MainWindow(object):
             self.streamBtn.setIconSize(QSize(24, 24))
             self.downloadPageRedirectBtn.setIconSize(QSize(24, 24))
 
-            self.downloadBtnMapsID[self.videoThumbnailBtn] = video_info['id']
-            self.downloadBtn2MapsID[self.downloadPageRedirectBtn] = video_info['id']
+            self.thumbnailBtnMapsID[self.videoThumbnailBtn] = video_info['id']
+            self.redirectBtnMapsID[self.downloadPageRedirectBtn] = video_info['id']
             self.streamBtnMapsID[self.streamBtn] = video_info['id']
-            self.downloadBtnMapsTitle[self.videoThumbnailBtn] = video_info['title']
+            self.thumbnailBtnMapsTitle[self.videoThumbnailBtn] = video_info['title']
             self.videoThumbnailBtn.clicked.connect(
                 lambda _, id=video_info['id'], title=video_info['title']: mainWindow.handleThumbnailBtnClick(id, title))
             self.downloadPageRedirectBtn.clicked.connect(
@@ -1640,7 +1642,7 @@ class Ui_MainWindow(object):
             del self.downloadSpacer
         except:
             pass
-
+        self.downloadBtnMapsID = {}
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -1777,6 +1779,7 @@ class Ui_MainWindow(object):
             self.video1080pRadioBtn.setChecked(True)
             self.startDownload(id, self.downloadPause, mainWindow, True)
         else:
+            self.downloadBtnMapsID[self.downloadBtn] = id
             self.downloadBtn.clicked.connect(lambda: self.startDownload(id, self.downloadPause, mainWindow))
         self.downloadPause.setEnabled(True)
         self.historyTitle = title
@@ -1837,6 +1840,14 @@ class Ui_MainWindow(object):
             mainWindow.history_list = mainWindow.history_manager.add_history(self.historyTime, self.historyElapsed,
                                                                              self.historyLocation, self.historyUrl,
                                                                              self.historyTitle)
+            try:
+                self.thumbnailBtnMapsID.clear()
+                self.redirectBtnMapsID.clear()
+                self.thumbnailBtnMapsTitle.clear()
+                self.streamBtnMapsID.clear()
+                self.downloadBtnMapsID.clear()
+            except AttributeError as e:
+                print("No Search has been done!")
             self.addHistory(mainWindow.history_list)
             self.downloadPause.setEnabled(False)
             self.download_thread.stop()
@@ -2243,12 +2254,13 @@ class Ui_MainWindow(object):
         self.folderSelectBtn.setText(QCoreApplication.translate("MainWindow", u"Folder Selector", None))
         self.settingVideoExtensionLabel.setText(
             QCoreApplication.translate("MainWindow", u"Default Video Extension", None))
-        self.videoExtensionComboBox.setItemText(0, QCoreApplication.translate("MainWindow", u".webm", None))
-        self.videoExtensionComboBox.setItemText(1, QCoreApplication.translate("MainWindow", u".mp4", None))
-        self.videoExtensionComboBox.setItemText(2, QCoreApplication.translate("MainWindow", u".mkv", None))
-        self.videoExtensionComboBox.setItemText(3, QCoreApplication.translate("MainWindow", u".avi", None))
-        self.videoExtensionComboBox.setItemText(4, QCoreApplication.translate("MainWindow", u".mov", None))
-        self.videoExtensionComboBox.setItemText(5, QCoreApplication.translate("MainWindow", u".wmv", None))
+        self.videoExtensionComboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"default", None))
+        self.videoExtensionComboBox.setItemText(1, QCoreApplication.translate("MainWindow", u".webm", None))
+        self.videoExtensionComboBox.setItemText(2, QCoreApplication.translate("MainWindow", u".mp4", None))
+        self.videoExtensionComboBox.setItemText(3, QCoreApplication.translate("MainWindow", u".mkv", None))
+        self.videoExtensionComboBox.setItemText(4, QCoreApplication.translate("MainWindow", u".avi", None))
+        self.videoExtensionComboBox.setItemText(5, QCoreApplication.translate("MainWindow", u".mov", None))
+        self.videoExtensionComboBox.setItemText(6, QCoreApplication.translate("MainWindow", u".wmv", None))
 
         # if QT_CONFIG(tooltip)
         self.videoExtensionComboBox.setToolTip(
@@ -2256,11 +2268,12 @@ class Ui_MainWindow(object):
         # endif // QT_CONFIG(tooltip)
         self.settingAudioExtensionLabel.setText(
             QCoreApplication.translate("MainWindow", u"Default Audio Extension", None))
-        self.audioExtensionComboBox.setItemText(0, QCoreApplication.translate("MainWindow", u".m4a", None))
-        self.audioExtensionComboBox.setItemText(1, QCoreApplication.translate("MainWindow", u".wav", None))
-        self.audioExtensionComboBox.setItemText(2, QCoreApplication.translate("MainWindow", u".mp3", None))
-        self.audioExtensionComboBox.setItemText(3, QCoreApplication.translate("MainWindow", u".aac", None))
-        self.audioExtensionComboBox.setItemText(4, QCoreApplication.translate("MainWindow", u".pcm", None))
+        self.audioExtensionComboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"default", None))
+        self.audioExtensionComboBox.setItemText(1, QCoreApplication.translate("MainWindow", u".m4a", None))
+        self.audioExtensionComboBox.setItemText(2, QCoreApplication.translate("MainWindow", u".wav", None))
+        self.audioExtensionComboBox.setItemText(3, QCoreApplication.translate("MainWindow", u".mp3", None))
+        self.audioExtensionComboBox.setItemText(4, QCoreApplication.translate("MainWindow", u".aac", None))
+        self.audioExtensionComboBox.setItemText(5, QCoreApplication.translate("MainWindow", u".pcm", None))
 
         # if QT_CONFIG(tooltip)
         self.audioExtensionComboBox.setToolTip(

@@ -35,7 +35,7 @@ class DownloadThread(QThread):
     progress = pyqtSignal(dict)
     status = pyqtSignal(str)
 
-    def __init__(self, id, type, download_directory="Downloads/", audio_extension='.m4a', video_extension='.webm',
+    def __init__(self, id, type, download_directory="Downloads/", audio_extension='default', video_extension='default',
                  mainwindow=None):
         super().__init__()
         self.id = id
@@ -50,11 +50,13 @@ class DownloadThread(QThread):
 
     @staticmethod
     def getextension(type, audio_extension, video_extension):
-        audio_extension = audio_extension.replace('.', '')
-        video_extension = video_extension.replace('.', '')
+        if audio_extension == 'default' or video_extension == 'default':
+            return 'default'
         if type == 2 or type == 1:
+            audio_extension = audio_extension.replace('.', '')
             return audio_extension
         else:
+            video_extension = video_extension.replace('.', '')
             return video_extension
 
     def getformat(self, type):
@@ -72,7 +74,8 @@ class DownloadThread(QThread):
             return 'bestaudio[ext=m4a]/best[ext=mp3]/best'
 
     def run(self):
-        ydl_opts = {
+        
+        formatted_opts = {
             'format': self.format,
             'progress_hooks': [self.my_hook],
             'outtmpl': self.download_path,
@@ -85,6 +88,19 @@ class DownloadThread(QThread):
             'logger': self.MyLogger(self.mainwindow),
             'verbose': True
         }
+
+        default_opts = {
+            'format': self.format,
+            'progress_hooks': [self.my_hook],
+            'outtmpl': self.download_path,
+            'subtitleslangs': ['en', 'hin'],
+            'quiet': True,
+            'ffmpeg_location': 'bin',
+            'logger': self.MyLogger(self.mainwindow),
+            'verbose': True
+        }
+
+        ydl_opts = default_opts if self.extension == 'default' else formatted_opts
         try:
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([self.id])

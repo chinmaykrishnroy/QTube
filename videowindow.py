@@ -44,6 +44,9 @@ class VideoWindow(QMainWindow):
             self.toggle_fullscreen(event)
         if event.key() == Qt.Key_Escape and self.is_fullscreen:
             self.toggle_fullscreen(event)
+        elif event.key() == Qt.Key_Escape and not self.is_fullscreen:
+            self.ui.videoWidgetBtn.click()
+            self.ui.playerOffBtn.click()
         if event.key() == Qt.Key_V:
             self.ui.mediaPlayBtn.click()
         if event.key() == Qt.Key_X:

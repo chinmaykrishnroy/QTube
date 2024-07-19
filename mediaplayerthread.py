@@ -46,9 +46,10 @@ class MediaPlayer(QThread):
                   self.mainwindow.minimum_video_height))
         self.media_player.setVideoOutput(self.ui.videoOutputFrame)
         self.ui.videoOutputFrame.mouseDoubleClickEvent = self.toggle_fullscreen
-        self.ui.mediaTitleLabel.setText("Player Initialized!")
+        self.ui.mediaTitleLabel.setText(f"Player Initialized!")
+        self.ui.mediaTitleLabel.setToolTip(f"PyPlayer: Player Standby Mode")
         QTimer.singleShot(self.mainwindow.label_timeout,
-                          lambda: self.ui.mediaTitleLabel.setText("PyPlayer: Player Standby Mode"))
+                          lambda: self.ui.mediaTitleLabel.setText(f"PyPlayer: Player Standby Mode"))
 
     def connect_ui(self):
         self.ui.playbackProgress.sliderMoved.connect(self.set_position)
@@ -63,7 +64,8 @@ class MediaPlayer(QThread):
         self.ui.playSoundBtn.clicked.connect(self.mute_unmute)
         self.ui.mediaRepeatBtn.clicked.connect(self.toggle_repeat)
         self.ui.mediaShuffleBtn.clicked.connect(self.toggle_shuffle)
-        self.ui.playbackSpeedCombobox.currentIndexChanged.connect(self.set_playback_speed)
+        self.ui.playbackSpeedCombobox.currentIndexChanged.connect(
+            self.set_playback_speed)
         self.ui.videoWidgetBtn.clicked.connect(self.toggle_fullscreen)
         self.ui.fileOpenBtn.clicked.connect(self.select_new_folder)
         self.ui.mediaLockBtn.clicked.connect(self.lock_player)
@@ -101,6 +103,7 @@ class MediaPlayer(QThread):
         self.ui.videoOutputFrame.hide()
         self.media_player.stop()
         self.ui.mediaTitleLabel.setText(f"PyPlayer: Stopped!")
+        self.ui.mediaTitleLabel.setToolTip(f"PyPlayer: Stopped!")
         self.resetLabel.start(self.mainwindow.label_timeout)
         self.ui.mediaPlayBtn.setIcon(QIcon(":/icons/icons/cil-media-play.png"))
         self.media_player.setVolume(int(self.mainwindow.default_volume))
@@ -126,12 +129,14 @@ class MediaPlayer(QThread):
 
     @pyqtSlot()
     def seek(self, milliseconds):
-        self.media_player.setPosition(self.media_player.position() + milliseconds)
+        self.media_player.setPosition(
+            self.media_player.position() + milliseconds)
 
     @pyqtSlot()
     def change_volume(self, amount):
         self.mainwindow.current_volume += amount
-        self.mainwindow.current_volume = max(0, min(self.mainwindow.current_volume, 100))
+        self.mainwindow.current_volume = max(
+            0, min(self.mainwindow.current_volume, 100))
         self.media_player.setVolume(self.mainwindow.current_volume)
 
     @pyqtSlot()
@@ -140,7 +145,8 @@ class MediaPlayer(QThread):
         self.media_player.setMuted(self.mainwindow.is_muted)
         self.ui.playSoundBtn.setIcon(
             QIcon(":/icons/icons/volume-x.svg" if self.mainwindow.is_muted else ":/icons/icons/volume-2.svg"))
-        self.ui.playSoundBtn.setText("Disabled" if self.mainwindow.is_muted else "Enabled")
+        self.ui.playSoundBtn.setText(
+            "Disabled" if self.mainwindow.is_muted else "Enabled")
         self.mainwindow.pushNotification(
             ("Media Volume Disabled" if self.mainwindow.is_muted else "Media Volume Enabled"), 0)
         self.ui.mediaMuteBtn.setIcon(QIcon(
@@ -150,10 +156,13 @@ class MediaPlayer(QThread):
     @pyqtSlot()
     def toggle_repeat(self):
         self.mainwindow.repeat_mode = (self.mainwindow.repeat_mode + 1) % 3
-        playback_modes = [QMediaPlaylist.Sequential, QMediaPlaylist.Loop, QMediaPlaylist.CurrentItemInLoop]
+        playback_modes = [QMediaPlaylist.Sequential,
+                          QMediaPlaylist.Loop, QMediaPlaylist.CurrentItemInLoop]
         icons = ["cil-loop.png", "cil-loop-circular.png", "cil-loop-1.png"]
-        self.playlist.setPlaybackMode(playback_modes[self.mainwindow.repeat_mode])
-        self.ui.mediaRepeatBtn.setIcon(QIcon(f":/icons/icons/{icons[self.mainwindow.repeat_mode]}"))
+        self.playlist.setPlaybackMode(
+            playback_modes[self.mainwindow.repeat_mode])
+        self.ui.mediaRepeatBtn.setIcon(
+            QIcon(f":/icons/icons/{icons[self.mainwindow.repeat_mode]}"))
 
     @pyqtSlot()
     def toggle_shuffle(self):
@@ -165,7 +174,8 @@ class MediaPlayer(QThread):
 
     @pyqtSlot(int)
     def set_playback_speed(self):
-        speed = float(self.ui.playbackSpeedCombobox.currentText().replace('x', ''))
+        speed = float(
+            self.ui.playbackSpeedCombobox.currentText().replace('x', ''))
         self.media_player.setPlaybackRate(speed)
 
     @pyqtSlot()
@@ -179,25 +189,30 @@ class MediaPlayer(QThread):
                 self.is_docked = True
             else:
                 self.video_window = VideoWindow(self.ui, self)
-                self.media_player.setVideoOutput(self.video_window.video_widget)
+                self.media_player.setVideoOutput(
+                    self.video_window.video_widget)
                 self.video_window.show()
                 self.ui.videoOutputFrame.hide()
                 self.is_docked = False
-                self.mainwindow.pushNotification("Double Click on Video Window to Toggle Full Screen", 0)
+                self.mainwindow.pushNotification(
+                    "Double Click on Video Window to Toggle Full Screen", 0)
         else:
-            self.mainwindow.pushNotification("Can't Undock Player for Audio", 0)
+            self.mainwindow.pushNotification(
+                "Can't Undock Player for Audio", 0)
 
     @pyqtSlot()
     def select_new_folder(self, folder=None):
         if folder is None:
-            folder = QFileDialog.getExistingDirectory(self.ui.centralwidget, "Select Media Folder")
+            folder = QFileDialog.getExistingDirectory(
+                self.ui.centralwidget, "Select Media Folder")
         if folder:
             media_files = []
             existing_files = set(self.mainwindow.media_files)
 
             # Check against existing playlist files
             for i in range(self.playlist.mediaCount()):
-                existing_files.add(self.playlist.media(i).canonicalUrl().toLocalFile())
+                existing_files.add(self.playlist.media(
+                    i).canonicalUrl().toLocalFile())
 
             for root, _, files in os.walk(folder):
                 for file in files:
@@ -239,7 +254,8 @@ class MediaPlayer(QThread):
     def update_position(self, position):
         self.ui.playbackProgress.setValue(position)
         self.ui.currentPlayingTimeLabel.setText(self.format_time(position))
-        self.ui.mediaLengthLabel.setText(self.format_time(self.duration - position))
+        self.ui.mediaLengthLabel.setText(
+            f"{self.format_time(self.duration - position)}")
 
     def update_duration(self, duration):
         self.duration = duration
@@ -249,13 +265,16 @@ class MediaPlayer(QThread):
         self.ui.mediaVolumeSlider.setValue(volume)
 
     def update_state(self, state):
-        icons = {QMediaPlayer.PlayingState: "cil-media-pause.png", QMediaPlayer.PausedState: "cil-media-play.png"}
-        self.ui.mediaPlayBtn.setIcon(QIcon(f":/icons/icons/{icons.get(state, 'cil-media-play.png')}"))
+        icons = {QMediaPlayer.PlayingState: "cil-media-pause.png",
+                 QMediaPlayer.PausedState: "cil-media-play.png"}
+        self.ui.mediaPlayBtn.setIcon(
+            QIcon(f":/icons/icons/{icons.get(state, 'cil-media-play.png')}"))
 
     def update_media(self, media):
         if media.isNull():
             self.stop()
             self.ui.mediaTitleLabel.setText(f"End of Playlist!")
+            self.ui.mediaTitleLabel.setToolTip(f"End of Playlist!")
             self.resetLabel.start(int(self.mainwindow.label_timeout))
             self.mainwindow.pushNotification(
                 f"No More Files to Play, Try Adding Directory Containing Media Files From Folder Button.")
@@ -264,8 +283,10 @@ class MediaPlayer(QThread):
                                   f"You Can Use Repeat Button to Loop the Playlist."))
             return
         file_path = media.canonicalUrl().toLocalFile()
-        self.is_video = any(format in file_path for format in self.mainwindow.video_formats)
-        self.ui.videoOutputFrame.show() if self.is_video and self.is_docked else self.ui.videoOutputFrame.hide()
+        self.is_video = any(
+            format in file_path for format in self.mainwindow.video_formats)
+        self.ui.videoOutputFrame.show(
+        ) if self.is_video and self.is_docked else self.ui.videoOutputFrame.hide()
         if not self.is_docked and not self.is_video:
             self.video_window.close()
             self.video_window = None
@@ -273,6 +294,7 @@ class MediaPlayer(QThread):
             self.media_player.setVideoOutput(self.ui.videoOutputFrame)
         self.current_filename = media.canonicalUrl().fileName()
         self.ui.mediaTitleLabel.setText(media.canonicalUrl().fileName())
+        self.ui.mediaTitleLabel.setToolTip(media.canonicalUrl().fileName())
         self.ui.playerTitleLabel.setText(media.canonicalUrl().fileName())
 
     def format_time(self, ms):
@@ -286,8 +308,10 @@ class MediaPlayer(QThread):
 
     def play_media_from_path(self, file_path):
         try:
-            self.is_video = any(format in file_path for format in self.mainwindow.video_formats)
-            self.ui.videoOutputFrame.show() if self.is_video and self.is_docked else self.ui.videoOutputFrame.hide()
+            self.is_video = any(
+                format in file_path for format in self.mainwindow.video_formats)
+            self.ui.videoOutputFrame.show(
+            ) if self.is_video and self.is_docked else self.ui.videoOutputFrame.hide()
             if not self.is_docked and not self.is_video:
                 self.video_window.close()
                 self.video_window = None
@@ -301,13 +325,17 @@ class MediaPlayer(QThread):
             self.playlist.setCurrentIndex(0)
             self.media_player.play()
         except Exception as e:
-            self.mainwindow.pushNotification(f"Can't Play Media Due to Exception: {e}")
+            self.mainwindow.pushNotification(
+                f"Can't Play Media Due to Exception: {e}")
 
     def reset_media_title(self):
         if self.current_filename:
             self.ui.mediaTitleLabel.setText(self.current_filename)
+            self.ui.mediaTitleLabel.setToolTip(self.current_filename)
         else:
-            self.ui.mediaTitleLabel.setText("PyPlayer: Player Standby Mode")
+            self.ui.mediaTitleLabel.setText(f"PyPlayer: Player Standby Mode")
+            self.ui.mediaTitleLabel.setToolTip(
+                f"PyPlayer: Player Standby Mode")
 
     def cleanup_before_exit(self):
         if self.video_window is not None:

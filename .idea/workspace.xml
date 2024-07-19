@@ -5,49 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2203037-b565-44af-b446-45b88f5700fe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/QTube.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Downloads/3LAU - How You Love Me ft. Bright Lights (Official Video).webm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Downloads/ignore.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_state.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/ffmpeg.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/ffplay.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/ffprobe.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/circulariconbutton.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/downloadthread.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elidedlabel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filethread.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/history.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/historymanager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imagedownloaderthread.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/interface.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internetcheckerthread.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mainthread.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mediaplayerthread.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/releasetoseekslider.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res_rc.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resizableiconbutton.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/searchthread.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sound/bottle.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sound/cat.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sound/close.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sound/drop.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sound/logo.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sound/logo2.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sound/notification.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sound/start.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sound/tap1.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sound/tap2.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/dark.theme" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/light.theme" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/videowindow.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/youtube.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +34,7 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>

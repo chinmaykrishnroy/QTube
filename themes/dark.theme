@@ -648,7 +648,7 @@ QScrollBar::add-line, QScrollBar::sub-line {
 }
 
 #mediaPlayerFrame QFrame {
-    background-color: #fb4c24; /*0b6b43*/
+    background-color: #242427; /*#fb4c24; #0b6b43;*/
 	font-family: "Helvetica", sans-serif;
 }
 

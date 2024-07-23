@@ -122,6 +122,10 @@ class MainWindow(QMainWindow):
         self.dots_timer.timeout.connect(self.updateDots)
         self.dots_timer.start(500)
 
+        self.reset_placeholder = QTimer(self)
+        self.reset_placeholder.setSingleShot(True)
+        self.reset_placeholder.timeout.connect(self.resetPlacehlder)
+
         self.sideBarAnimation = QPropertyAnimation(
             self.ui.leftMenuContainer, b"minimumWidth")
         self.sideBarAnimation.setDuration(self.animation_time)
@@ -528,9 +532,19 @@ class MainWindow(QMainWindow):
             else:
                 self.pushNotification(
                     "Type Something in Search Box, Query Can't be Blank!")
+                self.ui.searchInputText.setPlaceholderText(
+                    "Type Something, Query Can't be Blank!")
+                self.reset_placeholder.start(2000)
         else:
             self.pushNotification(
                 "No Internet! Connect to Stable Internet Connection.")
+            self.ui.searchInputText.setPlaceholderText(
+                "No Internet! Connect to Internet!")
+            self.reset_placeholder.start(2000)
+
+    def resetPlacehlder(self):
+        self.ui.searchInputText.setPlaceholderText(
+            "Enter Anything To Search...")
 
     def startVideoSearch(self, query):
         if self.internet_connected:
@@ -691,6 +705,10 @@ class MainWindow(QMainWindow):
             "Enabled" if self.logger_visible else "Disabled")
         self.ui.randInitBtn.setText(
             "Enabled" if self.allow_random_initial_query else "Disabled")
+        self.ui.notificationBtn.setIcon(
+            QIcon(':/icons/icons/cil-bell.png' if self.allow_notification_popups else ':/icons/icons/cil-volume-off.png'))
+        self.ui.themeBtn.setIcon(QIcon(
+            ':/icons/icons/cil-lightbulb.png' if self.dark_theme else ':/icons/icons/cil-moon.png'))
 
     def dragEnterEvent(self, event: QDragEnterEvent):
         if event.mimeData().hasUrls():
@@ -833,7 +851,7 @@ class MainWindow(QMainWindow):
         QTimer.singleShot(2000, lambda: self.ui.loadingLabel.show())
 
     def closeEvent(self, event):
-        self.ui.appMinBtn.click()
+        self.hide()
         self.saveState()
         self.playSound('sound/close.mp3', 10)
         self.media_player.cleanup_before_exit()

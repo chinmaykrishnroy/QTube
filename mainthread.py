@@ -607,7 +607,7 @@ class MainWindow(QMainWindow):
             'height': self.height(),
             'logger_visible': self.logger_visible
         }
-        with open('app_state.json', 'w') as f:
+        with open('.state.json', 'w') as f:
             json.dump(state, f)
 
     def loadState(self):
@@ -628,7 +628,7 @@ class MainWindow(QMainWindow):
         height_ = 640
         logger_visible = False
         try:
-            with open('app_state.json', 'r') as f:
+            with open('.state.json', 'r') as f:
                 state = json.load(f)
                 self.sound_enabled = state.get(
                     'sound_enabled', default_sound_enabled)

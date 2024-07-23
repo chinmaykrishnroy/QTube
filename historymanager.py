@@ -5,7 +5,7 @@ import pickle
 class HistoryManager:
     def __init__(self, app_directory):
         self.app_directory = app_directory
-        self.history_file = os.path.join(app_directory, 'history.zip')
+        self.history_file = os.path.join(app_directory, '.history')
         os.makedirs(self.app_directory, exist_ok=True)
         self.history = self.load_history()
 

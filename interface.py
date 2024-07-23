@@ -2750,7 +2750,7 @@ class Ui_MainWindow(object):
         self.randInitBtn.setText(QCoreApplication.translate(
             "MainWindow", u"Enabled", None))
         self.randInitBtn.setToolTip(
-            QCoreApplication.translate("MainWindow", u"Toggles Initial Search Results Shown on App Starting", None))
+            QCoreApplication.translate("MainWindow", u"Toggles Search Suggestions Shown on App Starting", None))
         self.loggerLabel.setText(
             QCoreApplication.translate("MainWindow", u"Logger", None))
         self.loggerBtn.setText(QCoreApplication.translate(
@@ -2831,7 +2831,7 @@ class Ui_MainWindow(object):
         self.filesSortComboBox.setItemText(
             3, QCoreApplication.translate("MainWindow", u"Time", None))
         self.randInitLabel.setText(QCoreApplication.translate(
-            "MainWindow", u"Random Init Search", None))
+            "MainWindow", u"Show Suggestions", None))
         self.randInitBtn.setText(QCoreApplication.translate(
             "MainWindow", u"Disabled", None))
 

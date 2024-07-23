@@ -2736,7 +2736,7 @@ class Ui_MainWindow(object):
         self.darkModeBtn.setText(
             QCoreApplication.translate("MainWindow", u"Dark", None))
         self.notificationSoundLabel.setText(QCoreApplication.translate(
-            "MainWindow", u"Notification Sound", None))
+            "MainWindow", u"Interface Sound", None))
         self.appSoundBtn.setText(QCoreApplication.translate(
             "MainWindow", u"Enabled", None))
         self.appSoundBtn.setToolTip(QCoreApplication.translate(

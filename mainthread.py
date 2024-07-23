@@ -810,7 +810,7 @@ class MainWindow(QMainWindow):
         webbrowser.open_new_tab("https://youtube.com")
 
     def redirectGithub(self):
-        webbrowser.open_new_tab("https://github.com/chinmaykrishnroy")
+        webbrowser.open_new_tab("https://github.com/chinmaykrishnroy/QTube")
 
     def redirectLinkedIn(self):
         webbrowser.open_new_tab("https://linkedin.com/in/chinmaykrishnroy")

@@ -2771,7 +2771,7 @@ class Ui_MainWindow(object):
         # endif // QT_CONFIG(tooltip)
         self.youtubeIconBtn.setText("")
         self.appNameLabel.setText(QCoreApplication.translate(
-            "MainWindow", u"YouTube Downloader", None))
+            "MainWindow", u"QTube", None))
         # if QT_CONFIG(tooltip)
         self.themeBtn.setToolTip(QCoreApplication.translate(
             "MainWindow", u"Toggle Themes", None))

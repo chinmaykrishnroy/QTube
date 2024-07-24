@@ -104,15 +104,8 @@ class DownloadThread(QThread):
         }
 
         ydl_opts = default_opts if self.extension == 'default' else formatted_opts
-        try:
-            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                ydl.download([self.id])
-        except Exception as e:
-            if self.mainwindow:
-                self.mainwindow.pushNotification(
-                    f"ERROR WHILE DOWNLOADING! Exception: {e}", 25)
-                self.mainwindow.ui.currentInfoLabel.setText(f"ERROR! {e}")
-            print("Download Error: ", e)
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([self.id])
         self._is_running = False
 
     def my_hook(self, d):

@@ -36,7 +36,7 @@ class MainWindow(QMainWindow):
 
         self.soundPlayer = QMediaPlayer()
         # self.sound_enabled = True
-        self.playSound('sound/drop.wav', 50)
+        self.playSound('%s/sound/drop.wav' % os.getcwd(), 50)
 
         # self.current_stack = 0
         self.setting_menu_visible = False
@@ -234,28 +234,28 @@ class MainWindow(QMainWindow):
             self.pushNotification("Notification Sounds Disabled")
 
     def showSearchStack(self):
-        self.playSound('sound/tap2.mp3')
+        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
         if self.ui.mainAppStack.currentIndex() != 0:
             self.ui.mainAppStack.setCurrentIndex(0)
         else:
             self.toggleSidebar()
 
     def showDownloadStack(self):
-        self.playSound('sound/tap2.mp3')
+        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
         if self.ui.mainAppStack.currentIndex() != 3:
             self.ui.mainAppStack.setCurrentIndex(3)
         else:
             self.toggleSidebar()
 
     def showFileStack(self):
-        self.playSound('sound/tap2.mp3')
+        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
         if self.ui.mainAppStack.currentIndex() != 4:
             self.ui.mainAppStack.setCurrentIndex(4)
         else:
             self.toggleSidebar()
 
     def showHistoryStack(self):
-        self.playSound('sound/tap2.mp3')
+        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
         if self.ui.mainAppStack.currentIndex() != 5:
             self.ui.mainAppStack.setCurrentIndex(5)
         else:
@@ -279,14 +279,14 @@ class MainWindow(QMainWindow):
         self.pushNotification('Files Refreshed')
 
     def toggleMaximized(self):
-        self.playSound('sound/tap2.mp3')
+        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
         if self.isMaximized():
             self.showNormal()
         else:
             self.showMaximized()
 
     def setMinimized(self):
-        self.playSound('sound/tap2.mp3')
+        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
         self.showMinimized()
 
     def updateInternetStatus(self, status):
@@ -312,7 +312,7 @@ class MainWindow(QMainWindow):
 
     def toggleSidebar(self):
         self.left_menu_container_visible ^= True
-        self.playSound('sound/tap2.mp3')
+        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
         if self.left_menu_container_visible:
             self.sideBarAnimation.setStartValue(
                 self.ui.leftMenuContainer.width())
@@ -328,7 +328,7 @@ class MainWindow(QMainWindow):
         self.sideBarAnimation.start()
 
     def hidesettingHelpMenu(self):
-        self.playSound('sound/tap2.mp3')
+        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
         self.settingHelpAnimation.setEndValue(0)
         self.settingHelpAnimation.start()
         self.ui.centerMenuSubContainer.hide()
@@ -337,7 +337,7 @@ class MainWindow(QMainWindow):
         self.setting_menu_visible = False
 
     def showSettingMenu(self):
-        self.playSound('sound/tap2.mp3')
+        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
         if self.help_menu_visible and not self.setting_menu_visible:
             self.ui.centerMenuSubContainer.show()
             self.ui.settingHelpMenu.setCurrentIndex(0)
@@ -363,7 +363,7 @@ class MainWindow(QMainWindow):
             self.help_menu_visible = False
 
     def showHelpMenu(self):
-        self.playSound('sound/tap2.mp3')
+        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
         if self.setting_menu_visible and not self.help_menu_visible:
             self.ui.centerMenuSubContainer.show()
             self.ui.settingHelpMenu.setCurrentIndex(1)
@@ -414,7 +414,8 @@ class MainWindow(QMainWindow):
         self.ui.notificationFrame.hide()
         if self.allow_notification_popups:
             if tone:
-                self.playSound('sound/notification.mp3', notification_volume)
+                self.playSound('%s/sound/notification.mp3' %
+                               os.getcwd(), notification_volume)
             self.notificationAnimation.setStartValue(0)
             self.notificationAnimation.setEndValue(49)
             self.notificationAnimation.start()
@@ -853,7 +854,7 @@ class MainWindow(QMainWindow):
     def closeEvent(self, event):
         self.hide()
         self.saveState()
-        self.playSound('sound/close.mp3', 10)
+        self.playSound('%s/sound/close.mp3' % os.getcwd(), 10)
         self.media_player.cleanup_before_exit()
         try:
             self.ui.download_thread.stop()

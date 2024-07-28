@@ -1,3 +1,13 @@
+#### Don't forget to pull git LFS files!
+
+```
+cd /path/to/parent/directory
+git clone https://github.com/chinmaykrishnroy/QTube.git
+cd repository
+git lfs install
+git lfs pull
+```
+
 # QTube
 
 QTube is a complete YouTube downloader application with a contemporary GUI in Python, boasting an integrated media player with advanced playback features. The application is crafted for efficient downloading and media playback, utilizing multithreading for seamless performance. It encompasses strong capabilities for video and audio playback, media management, and user engagement.

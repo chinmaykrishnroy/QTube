@@ -411,7 +411,7 @@ class MainWindow(QMainWindow):
             "Changed default audio extension to '%s' !" % self.default_audio_extension)
 
     def pushNotification(self, notification_message, notification_volume=25, tone=True):
-        self.ui.notificationFrame.hide()
+        # self.ui.notificationFrame.hide()
         if self.allow_notification_popups:
             if tone:
                 self.playSound('%s/sound/notification.mp3' %

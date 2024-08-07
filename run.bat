@@ -28,5 +28,8 @@ if not exist .venv (
 REM Activate the virtual environment and install packages
 call .venv\Scripts\activate.bat
 pip install PyQt5==5.15.11 yt-dlp==2024.8.6 youtube-search-python==1.6.6
+cls
+echo Starting QTube...
+powershell -command "$host.ui.RawUI.WindowTitle=''; (new-object -com shell.application).minimizeall()" >nul 2>&1
 python main.py
 call .venv\Scripts\deactivate.bat

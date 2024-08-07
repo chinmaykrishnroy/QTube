@@ -2,7 +2,7 @@
 //
 // This file is part of the QtGui Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -22,7 +22,7 @@
 
 %If (PyQt_OpenGL)
 
-class QOpenGLContextGroup : QObject
+class QOpenGLContextGroup : public QObject
 {
 %TypeHeaderCode
 #include <qopenglcontext.h>
@@ -40,7 +40,7 @@ private:
 %End
 %If (PyQt_OpenGL)
 
-class QOpenGLContext : QObject
+class QOpenGLContext : public QObject
 {
 %TypeHeaderCode
 #include <qopenglcontext.h>

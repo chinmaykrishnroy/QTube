@@ -2,7 +2,7 @@
 //
 // This file is part of the QtLocation Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -25,7 +25,7 @@ class QNavigationManager;
 %End
 %If (Qt_5_5_0 -)
 
-class QGeoServiceProvider : QObject
+class QGeoServiceProvider : public QObject
 {
 %TypeHeaderCode
 #include <qgeoserviceprovider.h>

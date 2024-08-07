@@ -2,7 +2,7 @@
 //
 // This file is part of the QtWidgets Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -378,7 +378,7 @@ private:
 
 QFlags<QGraphicsItem::GraphicsItemFlag> operator|(QGraphicsItem::GraphicsItemFlag f1, QFlags<QGraphicsItem::GraphicsItemFlag> f2);
 
-class QAbstractGraphicsShapeItem : QGraphicsItem
+class QAbstractGraphicsShapeItem : public QGraphicsItem
 {
 %TypeHeaderCode
 #include <qgraphicsitem.h>
@@ -395,7 +395,7 @@ public:
     virtual QPainterPath opaqueArea() const;
 };
 
-class QGraphicsPathItem : QAbstractGraphicsShapeItem
+class QGraphicsPathItem : public QAbstractGraphicsShapeItem
 {
 %TypeHeaderCode
 #include <qgraphicsitem.h>
@@ -416,7 +416,7 @@ public:
     virtual int type() const;
 };
 
-class QGraphicsRectItem : QAbstractGraphicsShapeItem
+class QGraphicsRectItem : public QAbstractGraphicsShapeItem
 {
 %TypeHeaderCode
 #include <qgraphicsitem.h>
@@ -439,7 +439,7 @@ public:
     virtual int type() const;
 };
 
-class QGraphicsEllipseItem : QAbstractGraphicsShapeItem
+class QGraphicsEllipseItem : public QAbstractGraphicsShapeItem
 {
 %TypeHeaderCode
 #include <qgraphicsitem.h>
@@ -466,7 +466,7 @@ public:
     virtual int type() const;
 };
 
-class QGraphicsPolygonItem : QAbstractGraphicsShapeItem
+class QGraphicsPolygonItem : public QAbstractGraphicsShapeItem
 {
 %TypeHeaderCode
 #include <qgraphicsitem.h>
@@ -489,7 +489,7 @@ public:
     virtual int type() const;
 };
 
-class QGraphicsLineItem : QGraphicsItem
+class QGraphicsLineItem : public QGraphicsItem
 {
 %TypeHeaderCode
 #include <qgraphicsitem.h>
@@ -514,7 +514,7 @@ public:
     virtual int type() const;
 };
 
-class QGraphicsPixmapItem : QGraphicsItem
+class QGraphicsPixmapItem : public QGraphicsItem
 {
 %TypeHeaderCode
 #include <qgraphicsitem.h>
@@ -549,7 +549,7 @@ public:
     void setShapeMode(QGraphicsPixmapItem::ShapeMode mode);
 };
 
-class QGraphicsSimpleTextItem : QAbstractGraphicsShapeItem
+class QGraphicsSimpleTextItem : public QAbstractGraphicsShapeItem
 {
 %TypeHeaderCode
 #include <qgraphicsitem.h>
@@ -572,7 +572,7 @@ public:
     virtual int type() const;
 };
 
-class QGraphicsItemGroup : QGraphicsItem
+class QGraphicsItemGroup : public QGraphicsItem
 {
 %TypeHeaderCode
 #include <qgraphicsitem.h>
@@ -601,7 +601,7 @@ public:
     virtual int type() const;
 };
 
-class QGraphicsObject : QObject, QGraphicsItem
+class QGraphicsObject : public QObject, public QGraphicsItem
 {
 %TypeHeaderCode
 #include <qgraphicsitem.h>
@@ -631,7 +631,7 @@ protected:
     virtual bool event(QEvent *ev);
 };
 
-class QGraphicsTextItem : QGraphicsObject
+class QGraphicsTextItem : public QGraphicsObject
 {
 %TypeHeaderCode
 #include <qgraphicsitem.h>

@@ -2,7 +2,7 @@
 //
 // This file is part of the QtCore Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -234,7 +234,7 @@ public:
     static int registerEventType(int hint = -1);
 };
 
-class QTimerEvent : QEvent
+class QTimerEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qcoreevent.h>
@@ -246,7 +246,7 @@ public:
     int timerId() const;
 };
 
-class QChildEvent : QEvent
+class QChildEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qcoreevent.h>
@@ -261,7 +261,7 @@ public:
     bool removed() const;
 };
 
-class QDynamicPropertyChangeEvent : QEvent
+class QDynamicPropertyChangeEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qcoreevent.h>

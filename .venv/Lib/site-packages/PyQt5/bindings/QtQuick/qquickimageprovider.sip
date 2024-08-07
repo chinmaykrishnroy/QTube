@@ -2,7 +2,7 @@
 //
 // This file is part of the QtQuick Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -20,7 +20,7 @@
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 
-class QQuickTextureFactory : QObject
+class QQuickTextureFactory : public QObject
 {
 %TypeHeaderCode
 #include <qquickimageprovider.h>
@@ -38,7 +38,7 @@ public:
 %End
 };
 
-class QQuickImageProvider : QQmlImageProviderBase
+class QQuickImageProvider : public QQmlImageProviderBase
 {
 %TypeHeaderCode
 #include <qquickimageprovider.h>
@@ -56,7 +56,7 @@ public:
 
 %If (Qt_5_6_0 -)
 
-class QQuickImageResponse : QObject
+class QQuickImageResponse : public QObject
 {
 %TypeHeaderCode
 #include <qquickimageprovider.h>
@@ -78,7 +78,7 @@ signals:
 %End
 %If (Qt_5_6_0 -)
 
-class QQuickAsyncImageProvider : QQuickImageProvider
+class QQuickAsyncImageProvider : public QQuickImageProvider
 {
 %TypeHeaderCode
 #include <qquickimageprovider.h>

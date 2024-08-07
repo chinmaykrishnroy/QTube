@@ -2,7 +2,7 @@
 //
 // This file is part of the QtQuick3D Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -22,7 +22,7 @@
 
 %If (Qt_5_15_0 -)
 
-class QQuick3DGeometry : QQuick3DObject
+class QQuick3DGeometry : public QQuick3DObject
 {
 %TypeHeaderCode
 #include <qquick3dgeometry.h>

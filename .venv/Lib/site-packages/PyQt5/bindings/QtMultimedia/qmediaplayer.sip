@@ -2,7 +2,7 @@
 //
 // This file is part of the QtMultimedia Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -23,7 +23,7 @@
 class QGraphicsVideoItem /External/;
 class QVideoWidget /External/;
 
-class QMediaPlayer : QMediaObject
+class QMediaPlayer : public QMediaObject
 {
 %TypeHeaderCode
 #include <qmediaplayer.h>

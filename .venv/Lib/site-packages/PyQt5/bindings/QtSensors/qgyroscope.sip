@@ -2,7 +2,7 @@
 //
 // This file is part of the QtSensors Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -22,7 +22,7 @@
 
 %If (Qt_5_1_0 -)
 
-class QGyroscopeReading : QSensorReading /NoDefaultCtors/
+class QGyroscopeReading : public QSensorReading /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qgyroscope.h>
@@ -40,7 +40,7 @@ public:
 %End
 %If (Qt_5_1_0 -)
 
-class QGyroscopeFilter : QSensorFilter
+class QGyroscopeFilter : public QSensorFilter
 {
 %TypeHeaderCode
 #include <qgyroscope.h>
@@ -53,7 +53,7 @@ public:
 %End
 %If (Qt_5_1_0 -)
 
-class QGyroscope : QSensor
+class QGyroscope : public QSensor
 {
 %TypeHeaderCode
 #include <qgyroscope.h>

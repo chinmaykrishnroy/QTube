@@ -2,7 +2,7 @@
 //
 // This file is part of the QtSensors Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -22,7 +22,7 @@
 
 %If (Qt_5_1_0 -)
 
-class QMagnetometerReading : QSensorReading /NoDefaultCtors/
+class QMagnetometerReading : public QSensorReading /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qmagnetometer.h>
@@ -42,7 +42,7 @@ public:
 %End
 %If (Qt_5_1_0 -)
 
-class QMagnetometerFilter : QSensorFilter
+class QMagnetometerFilter : public QSensorFilter
 {
 %TypeHeaderCode
 #include <qmagnetometer.h>
@@ -55,7 +55,7 @@ public:
 %End
 %If (Qt_5_1_0 -)
 
-class QMagnetometer : QSensor
+class QMagnetometer : public QSensor
 {
 %TypeHeaderCode
 #include <qmagnetometer.h>

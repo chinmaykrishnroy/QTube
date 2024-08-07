@@ -2,7 +2,7 @@
 //
 // This file is part of the QtMultimediaWidgets Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -20,7 +20,7 @@
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 
-class QGraphicsVideoItem : QGraphicsObject, QMediaBindableInterface
+class QGraphicsVideoItem : public QGraphicsObject, public QMediaBindableInterface
 {
 %TypeHeaderCode
 #include <qgraphicsvideoitem.h>

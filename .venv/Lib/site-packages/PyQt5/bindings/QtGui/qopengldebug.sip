@@ -2,7 +2,7 @@
 //
 // This file is part of the QtGui Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -107,7 +107,7 @@ QFlags<QOpenGLDebugMessage::Severity> operator|(QOpenGLDebugMessage::Severity f1
 %If (Qt_5_1_0 -)
 %If (PyQt_OpenGL)
 
-class QOpenGLDebugLogger : QObject
+class QOpenGLDebugLogger : public QObject
 {
 %TypeHeaderCode
 #include <qopengldebug.h>

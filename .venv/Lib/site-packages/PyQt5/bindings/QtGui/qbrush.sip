@@ -2,7 +2,7 @@
 //
 // This file is part of the QtGui Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -366,7 +366,7 @@ public:
     void setCoordinateMode(QGradient::CoordinateMode mode);
 };
 
-class QLinearGradient : QGradient
+class QLinearGradient : public QGradient
 {
 %TypeHeaderCode
 #include <qbrush.h>
@@ -387,7 +387,7 @@ public:
     void setFinalStop(qreal x, qreal y);
 };
 
-class QRadialGradient : QGradient
+class QRadialGradient : public QGradient
 {
 %TypeHeaderCode
 #include <qbrush.h>
@@ -418,7 +418,7 @@ public:
     void setFocalRadius(qreal radius);
 };
 
-class QConicalGradient : QGradient
+class QConicalGradient : public QGradient
 {
 %TypeHeaderCode
 #include <qbrush.h>

@@ -2,7 +2,7 @@
 //
 // This file is part of the QtWidgets Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -101,7 +101,7 @@ private:
 QDataStream &operator>>(QDataStream &in, QTableWidgetItem &item /Constrained/) /ReleaseGIL/;
 QDataStream &operator<<(QDataStream &out, const QTableWidgetItem &item /Constrained/) /ReleaseGIL/;
 
-class QTableWidget : QTableView
+class QTableWidget : public QTableView
 {
 %TypeHeaderCode
 #include <qtablewidget.h>

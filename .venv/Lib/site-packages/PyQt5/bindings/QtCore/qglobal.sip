@@ -2,7 +2,7 @@
 //
 // This file is part of the QtCore Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -29,8 +29,8 @@ int PYQT_VERSION;
 const char *PYQT_VERSION_STR;
 
 %ModuleCode
-static int PYQT_VERSION = 0x050f0a;
-static const char *PYQT_VERSION_STR = "5.15.10";
+static int PYQT_VERSION = 0x050f0b;
+static const char *PYQT_VERSION_STR = "5.15.11";
 %End
 const int QT_VERSION;
 const char *QT_VERSION_STR;

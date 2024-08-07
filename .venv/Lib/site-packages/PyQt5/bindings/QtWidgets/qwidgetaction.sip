@@ -2,7 +2,7 @@
 //
 // This file is part of the QtWidgets Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -20,7 +20,7 @@
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 
-class QWidgetAction : QAction
+class QWidgetAction : public QAction
 {
 %TypeHeaderCode
 #include <qwidgetaction.h>
@@ -31,13 +31,13 @@ public:
     virtual ~QWidgetAction();
     void setDefaultWidget(QWidget *w /Transfer/);
     QWidget *defaultWidget() const;
-    QWidget *requestWidget(QWidget *parent /TransferThis/) /Factory/;
-    void releaseWidget(QWidget *widget /TransferBack/);
+    QWidget *requestWidget(QWidget *parent);
+    void releaseWidget(QWidget *widget);
 
 protected:
     virtual bool event(QEvent *);
     virtual bool eventFilter(QObject *, QEvent *);
-    virtual QWidget *createWidget(QWidget *parent /TransferThis/) /Factory/;
-    virtual void deleteWidget(QWidget *widget /Transfer/);
+    virtual QWidget *createWidget(QWidget *parent);
+    virtual void deleteWidget(QWidget *widget);
     QList<QWidget *> createdWidgets() const;
 };

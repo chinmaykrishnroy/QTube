@@ -2,7 +2,7 @@
 //
 // This file is part of the QtCore Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -20,14 +20,14 @@
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 
-class QStateMachine : QState
+class QStateMachine : public QState
 {
 %TypeHeaderCode
 #include <qstatemachine.h>
 %End
 
 public:
-    class SignalEvent : QEvent /NoDefaultCtors/
+    class SignalEvent : public QEvent /NoDefaultCtors/
     {
 %TypeHeaderCode
 #include <qstatemachine.h>
@@ -40,7 +40,7 @@ public:
         QList<QVariant> arguments() const;
     };
 
-    class WrappedEvent : QEvent /NoDefaultCtors/
+    class WrappedEvent : public QEvent /NoDefaultCtors/
     {
 %TypeHeaderCode
 #include <qstatemachine.h>

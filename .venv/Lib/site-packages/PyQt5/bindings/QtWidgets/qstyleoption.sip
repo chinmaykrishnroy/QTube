@@ -2,7 +2,7 @@
 //
 // This file is part of the QtWidgets Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -180,7 +180,7 @@ public:
     void initFrom(const QWidget *w);
 };
 
-class QStyleOptionFocusRect : QStyleOption
+class QStyleOptionFocusRect : public QStyleOption
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -202,7 +202,7 @@ public:
     QStyleOptionFocusRect(const QStyleOptionFocusRect &other);
 };
 
-class QStyleOptionFrame : QStyleOption
+class QStyleOptionFrame : public QStyleOption
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -237,7 +237,7 @@ public:
 
 QFlags<QStyleOptionFrame::FrameFeature> operator|(QStyleOptionFrame::FrameFeature f1, QFlags<QStyleOptionFrame::FrameFeature> f2);
 
-class QStyleOptionTabWidgetFrame : QStyleOption
+class QStyleOptionTabWidgetFrame : public QStyleOption
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -266,7 +266,7 @@ public:
     QStyleOptionTabWidgetFrame(const QStyleOptionTabWidgetFrame &other);
 };
 
-class QStyleOptionTabBarBase : QStyleOption
+class QStyleOptionTabBarBase : public QStyleOption
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -291,7 +291,7 @@ public:
     QStyleOptionTabBarBase(const QStyleOptionTabBarBase &other);
 };
 
-class QStyleOptionHeader : QStyleOption
+class QStyleOptionHeader : public QStyleOption
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -344,7 +344,7 @@ public:
     QStyleOptionHeader(const QStyleOptionHeader &other);
 };
 
-class QStyleOptionButton : QStyleOption
+class QStyleOptionButton : public QStyleOption
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -382,7 +382,7 @@ public:
 
 QFlags<QStyleOptionButton::ButtonFeature> operator|(QStyleOptionButton::ButtonFeature f1, QFlags<QStyleOptionButton::ButtonFeature> f2);
 
-class QStyleOptionTab : QStyleOption
+class QStyleOptionTab : public QStyleOption
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -449,7 +449,7 @@ public:
 QFlags<QStyleOptionTab::CornerWidget> operator|(QStyleOptionTab::CornerWidget f1, QFlags<QStyleOptionTab::CornerWidget> f2);
 %If (Qt_5_15_0 -)
 
-class QStyleOptionTabV4 : QStyleOptionTab
+class QStyleOptionTabV4 : public QStyleOptionTab
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -467,7 +467,7 @@ public:
 
 %End
 
-class QStyleOptionProgressBar : QStyleOption
+class QStyleOptionProgressBar : public QStyleOption
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -497,7 +497,7 @@ public:
     QStyleOptionProgressBar(const QStyleOptionProgressBar &other);
 };
 
-class QStyleOptionMenuItem : QStyleOption
+class QStyleOptionMenuItem : public QStyleOption
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -547,7 +547,7 @@ public:
     QStyleOptionMenuItem(const QStyleOptionMenuItem &other);
 };
 
-class QStyleOptionDockWidget : QStyleOption
+class QStyleOptionDockWidget : public QStyleOption
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -573,7 +573,7 @@ public:
     QStyleOptionDockWidget(const QStyleOptionDockWidget &other);
 };
 
-class QStyleOptionViewItem : QStyleOption
+class QStyleOptionViewItem : public QStyleOption
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -642,7 +642,7 @@ public:
 
 QFlags<QStyleOptionViewItem::ViewItemFeature> operator|(QStyleOptionViewItem::ViewItemFeature f1, QFlags<QStyleOptionViewItem::ViewItemFeature> f2);
 
-class QStyleOptionToolBox : QStyleOption
+class QStyleOptionToolBox : public QStyleOption
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -683,7 +683,7 @@ public:
     QStyleOptionToolBox(const QStyleOptionToolBox &other);
 };
 
-class QStyleOptionRubberBand : QStyleOption
+class QStyleOptionRubberBand : public QStyleOption
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -706,7 +706,7 @@ public:
     QStyleOptionRubberBand(const QStyleOptionRubberBand &other);
 };
 
-class QStyleOptionComplex : QStyleOption
+class QStyleOptionComplex : public QStyleOption
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -729,7 +729,7 @@ public:
     QStyleOptionComplex(const QStyleOptionComplex &other);
 };
 
-class QStyleOptionSlider : QStyleOptionComplex
+class QStyleOptionSlider : public QStyleOptionComplex
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -762,7 +762,7 @@ public:
     QStyleOptionSlider(const QStyleOptionSlider &other);
 };
 
-class QStyleOptionSpinBox : QStyleOptionComplex
+class QStyleOptionSpinBox : public QStyleOptionComplex
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -786,7 +786,7 @@ public:
     QStyleOptionSpinBox(const QStyleOptionSpinBox &other);
 };
 
-class QStyleOptionToolButton : QStyleOptionComplex
+class QStyleOptionToolButton : public QStyleOptionComplex
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -828,7 +828,7 @@ public:
 
 QFlags<QStyleOptionToolButton::ToolButtonFeature> operator|(QStyleOptionToolButton::ToolButtonFeature f1, QFlags<QStyleOptionToolButton::ToolButtonFeature> f2);
 
-class QStyleOptionComboBox : QStyleOptionComplex
+class QStyleOptionComboBox : public QStyleOptionComplex
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -855,7 +855,7 @@ public:
     QStyleOptionComboBox(const QStyleOptionComboBox &other);
 };
 
-class QStyleOptionTitleBar : QStyleOptionComplex
+class QStyleOptionTitleBar : public QStyleOptionComplex
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -910,7 +910,7 @@ public:
     int type;
 };
 
-class QStyleHintReturnMask : QStyleHintReturn
+class QStyleHintReturnMask : public QStyleHintReturn
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -932,7 +932,7 @@ public:
     QRegion region;
 };
 
-class QStyleOptionToolBar : QStyleOption
+class QStyleOptionToolBar : public QStyleOption
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -976,7 +976,7 @@ public:
 
 QFlags<QStyleOptionToolBar::ToolBarFeature> operator|(QStyleOptionToolBar::ToolBarFeature f1, QFlags<QStyleOptionToolBar::ToolBarFeature> f2);
 
-class QStyleOptionGroupBox : QStyleOptionComplex
+class QStyleOptionGroupBox : public QStyleOptionComplex
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -1003,7 +1003,7 @@ public:
     QStyleOptionGroupBox(const QStyleOptionGroupBox &other);
 };
 
-class QStyleOptionSizeGrip : QStyleOptionComplex
+class QStyleOptionSizeGrip : public QStyleOptionComplex
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -1025,7 +1025,7 @@ public:
     QStyleOptionSizeGrip(const QStyleOptionSizeGrip &other);
 };
 
-class QStyleOptionGraphicsItem : QStyleOption
+class QStyleOptionGraphicsItem : public QStyleOption
 {
 %TypeHeaderCode
 #include <qstyleoption.h>
@@ -1048,7 +1048,7 @@ public:
     QStyleOptionGraphicsItem(const QStyleOptionGraphicsItem &other);
 };
 
-class QStyleHintReturnVariant : QStyleHintReturn
+class QStyleHintReturnVariant : public QStyleHintReturn
 {
 %TypeHeaderCode
 #include <qstyleoption.h>

@@ -2,7 +2,7 @@
 //
 // This file is part of the QtBluetooth Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -22,7 +22,7 @@
 
 %If (Qt_5_2_0 -)
 
-class QBluetoothServer : QObject
+class QBluetoothServer : public QObject
 {
 %TypeHeaderCode
 #include <qbluetoothserver.h>

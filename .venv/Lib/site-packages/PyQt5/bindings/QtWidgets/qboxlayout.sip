@@ -2,7 +2,7 @@
 //
 // This file is part of the QtWidgets Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -20,7 +20,7 @@
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 
-class QBoxLayout : QLayout
+class QBoxLayout : public QLayout
 {
 %TypeHeaderCode
 #include <qboxlayout.h>
@@ -120,7 +120,7 @@ public:
     void insertItem(int index, QLayoutItem * /Transfer/);
 };
 
-class QHBoxLayout : QBoxLayout
+class QHBoxLayout : public QBoxLayout
 {
 %TypeHeaderCode
 #include <qboxlayout.h>
@@ -132,7 +132,7 @@ public:
     virtual ~QHBoxLayout();
 };
 
-class QVBoxLayout : QBoxLayout
+class QVBoxLayout : public QBoxLayout
 {
 %TypeHeaderCode
 #include <qboxlayout.h>

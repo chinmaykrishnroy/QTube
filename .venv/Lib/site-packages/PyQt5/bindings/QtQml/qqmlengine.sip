@@ -2,7 +2,7 @@
 //
 // This file is part of the QtQml Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -53,7 +53,7 @@ private:
 
 QFlags<QQmlImageProviderBase::Flag> operator|(QQmlImageProviderBase::Flag f1, QFlags<QQmlImageProviderBase::Flag> f2);
 
-class QQmlEngine : QJSEngine
+class QQmlEngine : public QJSEngine
 {
 %TypeHeaderCode
 #include <qqmlengine.h>

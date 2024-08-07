@@ -2,7 +2,7 @@
 //
 // This file is part of the QtRemoteObjects Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -22,7 +22,7 @@
 
 %If (Qt_5_12_0 -)
 
-class QRemoteObjectAbstractPersistedStore : QObject
+class QRemoteObjectAbstractPersistedStore : public QObject
 {
 %TypeHeaderCode
 #include <qremoteobjectnode.h>
@@ -38,7 +38,7 @@ public:
 %End
 %If (Qt_5_12_0 -)
 
-class QRemoteObjectNode : QObject
+class QRemoteObjectNode : public QObject
 {
 %TypeHeaderCode
 #include <qremoteobjectnode.h>
@@ -129,7 +129,7 @@ protected:
 %End
 %If (Qt_5_12_0 -)
 
-class QRemoteObjectHostBase : QRemoteObjectNode /NoDefaultCtors/
+class QRemoteObjectHostBase : public QRemoteObjectNode /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qremoteobjectnode.h>
@@ -155,7 +155,7 @@ public:
 %End
 %If (Qt_5_12_0 -)
 
-class QRemoteObjectHost : QRemoteObjectHostBase
+class QRemoteObjectHost : public QRemoteObjectHostBase
 {
 %TypeHeaderCode
 #include <qremoteobjectnode.h>
@@ -178,7 +178,7 @@ signals:
 %End
 %If (Qt_5_12_0 -)
 
-class QRemoteObjectRegistryHost : QRemoteObjectHostBase
+class QRemoteObjectRegistryHost : public QRemoteObjectHostBase
 {
 %TypeHeaderCode
 #include <qremoteobjectnode.h>

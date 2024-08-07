@@ -2,7 +2,7 @@
 //
 // This file is part of the QtGui Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -30,7 +30,7 @@ namespace Qt
     QString convertFromPlainText(const QString &plain, Qt::WhiteSpaceMode mode = Qt::WhiteSpacePre);
 };
 
-class QTextDocument : QObject
+class QTextDocument : public QObject
 {
 %TypeHeaderCode
 #include <qtextdocument.h>

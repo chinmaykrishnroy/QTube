@@ -2,7 +2,7 @@
 //
 // This file is part of the QtGui Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -20,7 +20,7 @@
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 
-class QValidator : QObject
+class QValidator : public QObject
 {
 %TypeHeaderCode
 #include <qvalidator.h>
@@ -46,7 +46,7 @@ signals:
     void changed();
 };
 
-class QIntValidator : QValidator
+class QIntValidator : public QValidator
 {
 %TypeHeaderCode
 #include <qvalidator.h>
@@ -65,7 +65,7 @@ public:
     int top() const;
 };
 
-class QDoubleValidator : QValidator
+class QDoubleValidator : public QValidator
 {
 %TypeHeaderCode
 #include <qvalidator.h>
@@ -94,7 +94,7 @@ public:
     QDoubleValidator::Notation notation() const;
 };
 
-class QRegExpValidator : QValidator
+class QRegExpValidator : public QValidator
 {
 %TypeHeaderCode
 #include <qvalidator.h>
@@ -111,7 +111,7 @@ public:
 
 %If (Qt_5_1_0 -)
 
-class QRegularExpressionValidator : QValidator
+class QRegularExpressionValidator : public QValidator
 {
 %TypeHeaderCode
 #include <qvalidator.h>

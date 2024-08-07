@@ -2,7 +2,7 @@
 //
 // This file is part of the QtWidgets Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -20,7 +20,7 @@
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 
-class QGraphicsSceneEvent : QEvent /NoDefaultCtors/
+class QGraphicsSceneEvent : public QEvent /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qgraphicssceneevent.h>
@@ -82,7 +82,7 @@ private:
     QGraphicsSceneEvent(const QGraphicsSceneEvent &);
 };
 
-class QGraphicsSceneMouseEvent : QGraphicsSceneEvent /NoDefaultCtors/
+class QGraphicsSceneMouseEvent : public QGraphicsSceneEvent /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qgraphicssceneevent.h>
@@ -113,7 +113,7 @@ private:
     QGraphicsSceneMouseEvent(const QGraphicsSceneMouseEvent &);
 };
 
-class QGraphicsSceneWheelEvent : QGraphicsSceneEvent /NoDefaultCtors/
+class QGraphicsSceneWheelEvent : public QGraphicsSceneEvent /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qgraphicssceneevent.h>
@@ -133,7 +133,7 @@ private:
     QGraphicsSceneWheelEvent(const QGraphicsSceneWheelEvent &);
 };
 
-class QGraphicsSceneContextMenuEvent : QGraphicsSceneEvent /NoDefaultCtors/
+class QGraphicsSceneContextMenuEvent : public QGraphicsSceneEvent /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qgraphicssceneevent.h>
@@ -158,7 +158,7 @@ private:
     QGraphicsSceneContextMenuEvent(const QGraphicsSceneContextMenuEvent &);
 };
 
-class QGraphicsSceneHoverEvent : QGraphicsSceneEvent /NoDefaultCtors/
+class QGraphicsSceneHoverEvent : public QGraphicsSceneEvent /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qgraphicssceneevent.h>
@@ -178,7 +178,7 @@ private:
     QGraphicsSceneHoverEvent(const QGraphicsSceneHoverEvent &);
 };
 
-class QGraphicsSceneHelpEvent : QGraphicsSceneEvent /NoDefaultCtors/
+class QGraphicsSceneHelpEvent : public QGraphicsSceneEvent /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qgraphicssceneevent.h>
@@ -193,7 +193,7 @@ private:
     QGraphicsSceneHelpEvent(const QGraphicsSceneHelpEvent &);
 };
 
-class QGraphicsSceneDragDropEvent : QGraphicsSceneEvent /NoDefaultCtors/
+class QGraphicsSceneDragDropEvent : public QGraphicsSceneEvent /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qgraphicssceneevent.h>
@@ -218,7 +218,7 @@ private:
     QGraphicsSceneDragDropEvent(const QGraphicsSceneDragDropEvent &);
 };
 
-class QGraphicsSceneResizeEvent : QGraphicsSceneEvent
+class QGraphicsSceneResizeEvent : public QGraphicsSceneEvent
 {
 %TypeHeaderCode
 #include <qgraphicssceneevent.h>
@@ -234,7 +234,7 @@ private:
     QGraphicsSceneResizeEvent(const QGraphicsSceneResizeEvent &);
 };
 
-class QGraphicsSceneMoveEvent : QGraphicsSceneEvent
+class QGraphicsSceneMoveEvent : public QGraphicsSceneEvent
 {
 %TypeHeaderCode
 #include <qgraphicssceneevent.h>

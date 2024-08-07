@@ -2,7 +2,7 @@
 //
 // This file is part of the QtNetwork Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -104,7 +104,7 @@ public:
     QList<QByteArray> values() const;
 };
 
-class QDnsLookup : QObject
+class QDnsLookup : public QObject
 {
 %TypeHeaderCode
 #include <qdnslookup.h>

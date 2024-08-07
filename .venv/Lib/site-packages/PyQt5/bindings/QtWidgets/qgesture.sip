@@ -2,7 +2,7 @@
 //
 // This file is part of the QtWidgets Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -20,7 +20,7 @@
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 
-class QGesture : QObject
+class QGesture : public QObject
 {
 %TypeHeaderCode
 #include <qgesture.h>
@@ -46,7 +46,7 @@ public:
     QGesture::GestureCancelPolicy gestureCancelPolicy() const;
 };
 
-class QPanGesture : QGesture
+class QPanGesture : public QGesture
 {
 %TypeHeaderCode
 #include <qgesture.h>
@@ -64,7 +64,7 @@ public:
     void setAcceleration(qreal value);
 };
 
-class QPinchGesture : QGesture
+class QPinchGesture : public QGesture
 {
 %TypeHeaderCode
 #include <qgesture.h>
@@ -105,7 +105,7 @@ public:
     void setRotationAngle(qreal value);
 };
 
-class QSwipeGesture : QGesture
+class QSwipeGesture : public QGesture
 {
 %TypeHeaderCode
 #include <qgesture.h>
@@ -129,7 +129,7 @@ public:
     void setSwipeAngle(qreal value);
 };
 
-class QTapGesture : QGesture
+class QTapGesture : public QGesture
 {
 %TypeHeaderCode
 #include <qgesture.h>
@@ -142,7 +142,7 @@ public:
     void setPosition(const QPointF &pos);
 };
 
-class QTapAndHoldGesture : QGesture
+class QTapAndHoldGesture : public QGesture
 {
 %TypeHeaderCode
 #include <qgesture.h>
@@ -157,7 +157,7 @@ public:
     static int timeout();
 };
 
-class QGestureEvent : QEvent
+class QGestureEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qgesture.h>

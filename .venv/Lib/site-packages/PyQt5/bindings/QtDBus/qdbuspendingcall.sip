@@ -2,7 +2,7 @@
 //
 // This file is part of the QtDBus Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -37,7 +37,7 @@ private:
     QDBusPendingCall();
 };
 
-class QDBusPendingCallWatcher : QObject, QDBusPendingCall
+class QDBusPendingCallWatcher : public QObject, public QDBusPendingCall
 {
 %TypeHeaderCode
 #include <qdbuspendingcall.h>

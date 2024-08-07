@@ -2,7 +2,7 @@
 //
 // This file is part of the QtGui Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -20,7 +20,7 @@
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 
-class QTextObject : QObject
+class QTextObject : public QObject
 {
 %TypeHeaderCode
 #include <qtextobject.h>
@@ -38,7 +38,7 @@ public:
     int objectIndex() const;
 };
 
-class QTextBlockGroup : QTextObject
+class QTextBlockGroup : public QTextObject
 {
 %TypeHeaderCode
 #include <qtextobject.h>
@@ -53,7 +53,7 @@ protected:
     QList<QTextBlock> blockList() const;
 };
 
-class QTextFrame : QTextObject
+class QTextFrame : public QTextObject
 {
 %TypeHeaderCode
 #include <qtextobject.h>

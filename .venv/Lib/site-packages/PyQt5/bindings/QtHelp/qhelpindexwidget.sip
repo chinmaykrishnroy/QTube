@@ -2,7 +2,7 @@
 //
 // This file is part of the QtHelp Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -20,7 +20,7 @@
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 
-class QHelpIndexModel : QStringListModel /NoDefaultCtors/
+class QHelpIndexModel : public QStringListModel /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qhelpindexwidget.h>
@@ -43,7 +43,7 @@ private:
     virtual ~QHelpIndexModel();
 };
 
-class QHelpIndexWidget : QListView
+class QHelpIndexWidget : public QListView
 {
 %TypeHeaderCode
 #include <qhelpindexwidget.h>

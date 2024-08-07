@@ -2,7 +2,7 @@
 //
 // This file is part of the QtQuick Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -20,7 +20,7 @@
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 
-class QSGTexture : QObject
+class QSGTexture : public QObject
 {
 %TypeHeaderCode
 #include <qsgtexture.h>
@@ -103,7 +103,7 @@ public:
 %End
 };
 
-class QSGDynamicTexture : QSGTexture
+class QSGDynamicTexture : public QSGTexture
 {
 %TypeHeaderCode
 #include <qsgtexture.h>

@@ -2,7 +2,7 @@
 //
 // This file is part of the QtWidgets Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -20,7 +20,7 @@
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 
-class QGraphicsEffect : QObject
+class QGraphicsEffect : public QObject
 {
 %TypeHeaderCode
 #include <qgraphicseffect.h>
@@ -69,7 +69,7 @@ protected:
 
 QFlags<QGraphicsEffect::ChangeFlag> operator|(QGraphicsEffect::ChangeFlag f1, QFlags<QGraphicsEffect::ChangeFlag> f2);
 
-class QGraphicsColorizeEffect : QGraphicsEffect
+class QGraphicsColorizeEffect : public QGraphicsEffect
 {
 %TypeHeaderCode
 #include <qgraphicseffect.h>
@@ -93,7 +93,7 @@ protected:
     virtual void draw(QPainter *painter);
 };
 
-class QGraphicsBlurEffect : QGraphicsEffect
+class QGraphicsBlurEffect : public QGraphicsEffect
 {
 %TypeHeaderCode
 #include <qgraphicseffect.h>
@@ -128,7 +128,7 @@ protected:
 
 QFlags<QGraphicsBlurEffect::BlurHint> operator|(QGraphicsBlurEffect::BlurHint f1, QFlags<QGraphicsBlurEffect::BlurHint> f2);
 
-class QGraphicsDropShadowEffect : QGraphicsEffect
+class QGraphicsDropShadowEffect : public QGraphicsEffect
 {
 %TypeHeaderCode
 #include <qgraphicseffect.h>
@@ -162,7 +162,7 @@ protected:
     virtual void draw(QPainter *painter);
 };
 
-class QGraphicsOpacityEffect : QGraphicsEffect
+class QGraphicsOpacityEffect : public QGraphicsEffect
 {
 %TypeHeaderCode
 #include <qgraphicseffect.h>

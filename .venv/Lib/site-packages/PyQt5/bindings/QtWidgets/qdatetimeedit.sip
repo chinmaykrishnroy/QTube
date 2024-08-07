@@ -2,7 +2,7 @@
 //
 // This file is part of the QtWidgets Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -20,7 +20,7 @@
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 
-class QDateTimeEdit : QAbstractSpinBox
+class QDateTimeEdit : public QAbstractSpinBox
 {
 %TypeHeaderCode
 #include <qdatetimeedit.h>
@@ -127,7 +127,7 @@ public:
 %End
 };
 
-class QTimeEdit : QDateTimeEdit
+class QTimeEdit : public QDateTimeEdit
 {
 %TypeHeaderCode
 #include <qdatetimeedit.h>
@@ -139,7 +139,7 @@ public:
     virtual ~QTimeEdit();
 };
 
-class QDateEdit : QDateTimeEdit
+class QDateEdit : public QDateTimeEdit
 {
 %TypeHeaderCode
 #include <qdatetimeedit.h>

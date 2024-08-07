@@ -2,7 +2,7 @@
 //
 // This file is part of the QtXml Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -149,7 +149,7 @@ public:
     virtual bool parse(const QXmlInputSource *input) = 0;
 };
 
-class QXmlSimpleReader : QXmlReader
+class QXmlSimpleReader : public QXmlReader
 {
 %TypeHeaderCode
 #include <qxml.h>
@@ -290,7 +290,7 @@ public:
     virtual QString errorString() const = 0;
 };
 
-class QXmlDefaultHandler : QXmlContentHandler, QXmlErrorHandler, QXmlDTDHandler, QXmlEntityResolver, QXmlLexicalHandler, QXmlDeclHandler
+class QXmlDefaultHandler : public QXmlContentHandler, public QXmlErrorHandler, public QXmlDTDHandler, public QXmlEntityResolver, public QXmlLexicalHandler, public QXmlDeclHandler
 {
 %TypeHeaderCode
 #include <qxml.h>

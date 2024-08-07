@@ -2,7 +2,7 @@
 //
 // This file is part of the QtWidgets Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -20,7 +20,7 @@
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 
-class QGraphicsTransform : QObject
+class QGraphicsTransform : public QObject
 {
 %TypeHeaderCode
 #include <qgraphicstransform.h>
@@ -35,7 +35,7 @@ protected slots:
     void update();
 };
 
-class QGraphicsScale : QGraphicsTransform
+class QGraphicsScale : public QGraphicsTransform
 {
 %TypeHeaderCode
 #include <qgraphicstransform.h>
@@ -62,7 +62,7 @@ signals:
     void zScaleChanged();
 };
 
-class QGraphicsRotation : QGraphicsTransform
+class QGraphicsRotation : public QGraphicsTransform
 {
 %TypeHeaderCode
 #include <qgraphicstransform.h>

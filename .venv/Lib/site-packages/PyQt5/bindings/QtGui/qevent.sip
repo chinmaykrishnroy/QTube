@@ -2,7 +2,7 @@
 //
 // This file is part of the QtGui Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -20,7 +20,7 @@
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 
-class QInputEvent : QEvent /NoDefaultCtors/
+class QInputEvent : public QEvent /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -199,7 +199,7 @@ public:
     void setTimestamp(ulong atimestamp);
 };
 
-class QMouseEvent : QInputEvent
+class QMouseEvent : public QInputEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -232,7 +232,7 @@ public:
 %End
 };
 
-class QHoverEvent : QInputEvent
+class QHoverEvent : public QInputEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -247,7 +247,7 @@ public:
     const QPointF &oldPosF() const;
 };
 
-class QWheelEvent : QInputEvent
+class QWheelEvent : public QInputEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -296,7 +296,7 @@ public:
 %End
 };
 
-class QTabletEvent : QInputEvent
+class QTabletEvent : public QInputEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -357,7 +357,7 @@ public:
 %End
 };
 
-class QKeyEvent : QInputEvent
+class QKeyEvent : public QInputEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -378,7 +378,7 @@ public:
     quint32 nativeVirtualKey() const;
 };
 
-class QFocusEvent : QEvent
+class QFocusEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -392,7 +392,7 @@ public:
     Qt::FocusReason reason() const;
 };
 
-class QPaintEvent : QEvent
+class QPaintEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -406,7 +406,7 @@ public:
     const QRegion &region() const;
 };
 
-class QMoveEvent : QEvent
+class QMoveEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -419,7 +419,7 @@ public:
     const QPoint &oldPos() const;
 };
 
-class QResizeEvent : QEvent
+class QResizeEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -432,7 +432,7 @@ public:
     const QSize &oldSize() const;
 };
 
-class QCloseEvent : QEvent
+class QCloseEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -443,7 +443,7 @@ public:
     virtual ~QCloseEvent();
 };
 
-class QIconDragEvent : QEvent
+class QIconDragEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -454,7 +454,7 @@ public:
     virtual ~QIconDragEvent();
 };
 
-class QShowEvent : QEvent
+class QShowEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -465,7 +465,7 @@ public:
     virtual ~QShowEvent();
 };
 
-class QHideEvent : QEvent
+class QHideEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -476,7 +476,7 @@ public:
     virtual ~QHideEvent();
 };
 
-class QContextMenuEvent : QInputEvent
+class QContextMenuEvent : public QInputEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -503,7 +503,7 @@ public:
     QContextMenuEvent::Reason reason() const;
 };
 
-class QInputMethodEvent : QEvent
+class QInputMethodEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -550,7 +550,7 @@ public:
     int replacementLength() const;
 };
 
-class QInputMethodQueryEvent : QEvent
+class QInputMethodQueryEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -564,7 +564,7 @@ public:
     QVariant value(Qt::InputMethodQuery query) const;
 };
 
-class QDropEvent : QEvent
+class QDropEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -586,7 +586,7 @@ public:
     const QMimeData *mimeData() const;
 };
 
-class QDragMoveEvent : QDropEvent
+class QDragMoveEvent : public QDropEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -602,7 +602,7 @@ public:
     void ignore(const QRect &r);
 };
 
-class QDragEnterEvent : QDragMoveEvent
+class QDragEnterEvent : public QDragMoveEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -613,7 +613,7 @@ public:
     virtual ~QDragEnterEvent();
 };
 
-class QDragLeaveEvent : QEvent
+class QDragLeaveEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -624,7 +624,7 @@ public:
     virtual ~QDragLeaveEvent();
 };
 
-class QHelpEvent : QEvent
+class QHelpEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -641,7 +641,7 @@ public:
     const QPoint &globalPos() const;
 };
 
-class QStatusTipEvent : QEvent
+class QStatusTipEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -653,7 +653,7 @@ public:
     QString tip() const;
 };
 
-class QWhatsThisClickedEvent : QEvent
+class QWhatsThisClickedEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -665,7 +665,7 @@ public:
     QString href() const;
 };
 
-class QActionEvent : QEvent
+class QActionEvent : public QEvent
 {
 %TypeHintCode
 from PyQt5.QtWidgets import QAction
@@ -682,7 +682,7 @@ public:
     QAction *before() const;
 };
 
-class QFileOpenEvent : QEvent /NoDefaultCtors/
+class QFileOpenEvent : public QEvent /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -695,7 +695,7 @@ public:
     bool openFile(QFile &file, QIODevice::OpenMode flags) const;
 };
 
-class QShortcutEvent : QEvent
+class QShortcutEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -709,7 +709,7 @@ public:
     int shortcutId() const;
 };
 
-class QWindowStateChangeEvent : QEvent /NoDefaultCtors/
+class QWindowStateChangeEvent : public QEvent /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -720,7 +720,7 @@ public:
     Qt::WindowStates oldState() const;
 };
 
-class QTouchEvent : QInputEvent
+class QTouchEvent : public QInputEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -789,7 +789,7 @@ public:
 QFlags<QTouchEvent::TouchPoint::InfoFlag> operator|(QTouchEvent::TouchPoint::InfoFlag f1, QFlags<QTouchEvent::TouchPoint::InfoFlag> f2);
 QFlags<QTouchEvent::TouchPoint::InfoFlag> operator|(QTouchEvent::TouchPoint::InfoFlag f1, QTouchEvent::TouchPoint::InfoFlag f2);
 
-class QExposeEvent : QEvent
+class QExposeEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -801,7 +801,7 @@ public:
     const QRegion &region() const;
 };
 
-class QScrollPrepareEvent : QEvent
+class QScrollPrepareEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -819,7 +819,7 @@ public:
     void setContentPos(const QPointF &pos);
 };
 
-class QScrollEvent : QEvent
+class QScrollEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -843,7 +843,7 @@ public:
 bool operator==(QKeyEvent *e, QKeySequence::StandardKey key);
 bool operator==(QKeySequence::StandardKey key, QKeyEvent *e);
 
-class QEnterEvent : QEvent
+class QEnterEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -866,7 +866,7 @@ public:
 class QAction /External/;
 %If (Qt_5_2_0 -)
 
-class QNativeGestureEvent : QInputEvent
+class QNativeGestureEvent : public QInputEvent
 {
 %TypeHeaderCode
 #include <qevent.h>
@@ -895,7 +895,7 @@ public:
 %End
 %If (Qt_5_5_0 -)
 
-class QPlatformSurfaceEvent : QEvent
+class QPlatformSurfaceEvent : public QEvent
 {
 %TypeHeaderCode
 #include <qevent.h>

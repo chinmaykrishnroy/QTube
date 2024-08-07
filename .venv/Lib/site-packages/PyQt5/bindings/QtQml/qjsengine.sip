@@ -2,7 +2,7 @@
 //
 // This file is part of the QtQml Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -24,7 +24,7 @@
 #include <qjsengine.h>
 %End
 
-class QJSEngine : QObject
+class QJSEngine : public QObject
 {
 %TypeHeaderCode
 #include <qjsengine.h>

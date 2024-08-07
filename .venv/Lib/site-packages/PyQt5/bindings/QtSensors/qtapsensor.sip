@@ -2,7 +2,7 @@
 //
 // This file is part of the QtSensors Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -22,7 +22,7 @@
 
 %If (Qt_5_1_0 -)
 
-class QTapReading : QSensorReading /NoDefaultCtors/
+class QTapReading : public QSensorReading /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qtapsensor.h>
@@ -55,7 +55,7 @@ public:
 %End
 %If (Qt_5_1_0 -)
 
-class QTapFilter : QSensorFilter
+class QTapFilter : public QSensorFilter
 {
 %TypeHeaderCode
 #include <qtapsensor.h>
@@ -68,7 +68,7 @@ public:
 %End
 %If (Qt_5_1_0 -)
 
-class QTapSensor : QSensor
+class QTapSensor : public QSensor
 {
 %TypeHeaderCode
 #include <qtapsensor.h>

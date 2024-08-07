@@ -2,7 +2,7 @@
 //
 // This file is part of the QtSensors Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -22,7 +22,7 @@
 
 %If (Qt_5_1_0 -)
 
-class QAccelerometerReading : QSensorReading /NoDefaultCtors/
+class QAccelerometerReading : public QSensorReading /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qaccelerometer.h>
@@ -40,7 +40,7 @@ public:
 %End
 %If (Qt_5_1_0 -)
 
-class QAccelerometerFilter : QSensorFilter
+class QAccelerometerFilter : public QSensorFilter
 {
 %TypeHeaderCode
 #include <qaccelerometer.h>
@@ -53,7 +53,7 @@ public:
 %End
 %If (Qt_5_1_0 -)
 
-class QAccelerometer : QSensor
+class QAccelerometer : public QSensor
 {
 %TypeHeaderCode
 #include <qaccelerometer.h>

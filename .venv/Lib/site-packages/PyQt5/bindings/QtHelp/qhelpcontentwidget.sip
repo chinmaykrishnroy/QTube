@@ -2,7 +2,7 @@
 //
 // This file is part of the QtHelp Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -37,7 +37,7 @@ public:
     int childPosition(QHelpContentItem *child) const;
 };
 
-class QHelpContentModel : QAbstractItemModel /NoDefaultCtors/
+class QHelpContentModel : public QAbstractItemModel /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qhelpcontentwidget.h>
@@ -59,7 +59,7 @@ signals:
     void contentsCreated();
 };
 
-class QHelpContentWidget : QTreeView
+class QHelpContentWidget : public QTreeView
 {
 %TypeHeaderCode
 #include <qhelpcontentwidget.h>

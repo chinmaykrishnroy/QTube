@@ -2,7 +2,7 @@
 //
 // This file is part of the QtQuick Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -245,7 +245,7 @@ private:
     QSGNode(const QSGNode &);
 };
 
-class QSGBasicGeometryNode : QSGNode /NoDefaultCtors/
+class QSGBasicGeometryNode : public QSGNode /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qsgnode.h>
@@ -264,7 +264,7 @@ public:
     QSGGeometry *geometry();
 };
 
-class QSGGeometryNode : QSGBasicGeometryNode
+class QSGGeometryNode : public QSGBasicGeometryNode
 {
 %TypeHeaderCode
 #include <qsgnode.h>
@@ -293,7 +293,7 @@ public:
     QSGMaterial *opaqueMaterial() const;
 };
 
-class QSGClipNode : QSGBasicGeometryNode
+class QSGClipNode : public QSGBasicGeometryNode
 {
 %TypeHeaderCode
 #include <qsgnode.h>
@@ -308,7 +308,7 @@ public:
     QRectF clipRect() const;
 };
 
-class QSGTransformNode : QSGNode
+class QSGTransformNode : public QSGNode
 {
 %TypeHeaderCode
 #include <qsgnode.h>
@@ -321,7 +321,7 @@ public:
     const QMatrix4x4 &matrix() const;
 };
 
-class QSGOpacityNode : QSGNode
+class QSGOpacityNode : public QSGNode
 {
 %TypeHeaderCode
 #include <qsgnode.h>

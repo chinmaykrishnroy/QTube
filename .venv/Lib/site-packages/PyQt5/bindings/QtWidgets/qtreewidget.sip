@@ -2,7 +2,7 @@
 //
 // This file is part of the QtWidgets Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -119,7 +119,7 @@ private:
 QDataStream &operator<<(QDataStream &out, const QTreeWidgetItem &item /Constrained/) /ReleaseGIL/;
 QDataStream &operator>>(QDataStream &in, QTreeWidgetItem &item /Constrained/) /ReleaseGIL/;
 
-class QTreeWidget : QTreeView
+class QTreeWidget : public QTreeView
 {
 %TypeHeaderCode
 #include <qtreewidget.h>

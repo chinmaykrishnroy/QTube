@@ -2,7 +2,7 @@
 //
 // This file is part of the QtSensors Python extension module.
 //
-// Copyright (c) 2023 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2024 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -22,7 +22,7 @@
 
 %If (Qt_5_1_0 -)
 
-class QPressureReading : QSensorReading /NoDefaultCtors/
+class QPressureReading : public QSensorReading /NoDefaultCtors/
 {
 %TypeHeaderCode
 #include <qpressuresensor.h>
@@ -42,7 +42,7 @@ public:
 %End
 %If (Qt_5_1_0 -)
 
-class QPressureFilter : QSensorFilter
+class QPressureFilter : public QSensorFilter
 {
 %TypeHeaderCode
 #include <qpressuresensor.h>
@@ -55,7 +55,7 @@ public:
 %End
 %If (Qt_5_1_0 -)
 
-class QPressureSensor : QSensor
+class QPressureSensor : public QSensor
 {
 %TypeHeaderCode
 #include <qpressuresensor.h>

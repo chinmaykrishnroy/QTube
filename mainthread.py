@@ -222,7 +222,8 @@ class MainWindow(QMainWindow):
                 self.soundPlayer.setVolume(volume)
                 self.soundPlayer.play()
             except Exception as e:
-                print("Can't play tones! ", e)
+                #print("Can't play tones! ", e)
+                pass
 
     def handleAppSound(self):
         self.sound_enabled = not self.sound_enabled
@@ -308,7 +309,7 @@ class MainWindow(QMainWindow):
             self.ui.currentInfoLabel.setText("")
         self.loggerText = self.ui.currentInfoLabel.text()
         self.ui.currentInfoLabel.setText("")
-        # print(f"Does the device connected to the internet?: {self.internet_connected}")
+        #print(f"Does the device connected to the internet?: {self.internet_connected}")
 
     def toggleSidebar(self):
         self.left_menu_container_visible ^= True
@@ -477,7 +478,7 @@ class MainWindow(QMainWindow):
             self.ui.loadingIcon.setMovie(self.initGif)
             self.initGif.start()
         except Exception as e:
-            print("Can't load theme! '%s'" % e)
+            #print("Can't load theme! '%s'" % e)
             self.pushNotification(f"Theme file not found! {e}")
             self.close()
             QMessageBox.critical(self, "Error", f"Theme file not found!\n{e}")
@@ -515,7 +516,7 @@ class MainWindow(QMainWindow):
             self.default_download_directory = directory
             self.file_watcher_system.stop()
             self.file_watcher_system.deleteLater()
-            print("Selected directory:", self.default_download_directory)
+            #print("Selected directory:", self.default_download_directory)
             self.ui.folderSelectBtn.setText("Directory Updated")
             QTimer.singleShot(
                 self.label_timeout, lambda: self.ui.folderSelectBtn.setText("Folder Selector"))
@@ -567,11 +568,11 @@ class MainWindow(QMainWindow):
         self.ui.mainAppStack.setCurrentIndex(0)
 
     def handlefilePlayBtnClick(self, path):
-        print("Clicked on: ", path)
+        #print("Clicked on: ", path)
         self.media_player.play_media_from_path(path)
 
     def handleDownloadBtnClick(self, id, title):
-        print("Thumbnail Button video ID: ", id, "video Title: ", title)
+        #print("Thumbnail Button video ID: ", id, "video Title: ", title)
         try:
             try:
                 int(id)
@@ -581,12 +582,12 @@ class MainWindow(QMainWindow):
             self.ui.searchInputText.clear()
         except Exception as e:
             self.ui.stopImageDownloaderThreads()
-            print("Can't add to download due to exception:  ", e)
+            #print("Can't add to download due to exception:  ", e)
             self.pushNotification(
                 f"Can't add to download due to exception: {e}")
 
     def handleThumbnailBtnClick(self, id, title):
-        print("Thumbnail Button video ID: ", id, "video Title: ", title)
+        #print("Thumbnail Button video ID: ", id, "video Title: ", title)
         try:
             try:
                 int(id)
@@ -596,12 +597,13 @@ class MainWindow(QMainWindow):
             self.ui.searchInputText.clear()
         except Exception as e:
             self.ui.stopImageDownloaderThreads()
-            print("Can't add to download due to exception:  ", e)
+            #print("Can't add to download due to exception:  ", e)
             self.pushNotification(
                 f"Can't add to download due to exception: {e}")
 
     def handleStreamBtnClick(self, id, title):
-        print("Stream Button video ID: ", id, "video Title: ", title)
+        #print("Stream Button video ID: ", id, "video Title: ", title)
+        pass
 
     def saveState(self):
         state = {
@@ -859,15 +861,18 @@ class MainWindow(QMainWindow):
         try:
             self.ui.download_thread.stop()
         except AttributeError:
-            print("download thread was never created")
+            #print("download thread was never created")
+            pass
         try:
             self.ui.stopImageDownloaderThreads()
         except AttributeError:
-            print("image downloader thread was never created")
+            #print("image downloader thread was never created")
+            pass
         try:
             self.search_thread.stop()
         except AttributeError:
-            print("search thread was never created")
+            #print("search thread was never created")
+            pass
         self.timer.stop()
         self.dots_timer.stop()
         self.internet_checker.stop()

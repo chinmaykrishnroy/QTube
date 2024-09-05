@@ -1850,7 +1850,7 @@ class Ui_MainWindow(object):
 
             except Exception as e:
                 self.imageDownloadThreads.clear()
-                print("Error due to: ", e)
+                #print("Error due to: ", e)
                 self.videoThumbnailBtn.setIcon(icon11)
                 self.channelIconBtn.setIcon(icon19)
                 self.videoThumbnailBtn.setIconSize(QSize(202, 202))
@@ -1908,7 +1908,7 @@ class Ui_MainWindow(object):
             thread.stop()
             thread.wait()
             thread.deleteLater()
-            print("Deleting Image Downloader Threads")
+            #print("Deleting Image Downloader Threads")
         self.imageDownloadThreads.clear()
 
     def addDownload(self, id, title, mainWindow, direct=False):
@@ -2166,7 +2166,8 @@ class Ui_MainWindow(object):
                 self.streamBtnMapsID.clear()
                 self.downloadBtnMapsID.clear()
             except AttributeError as e:
-                print("No Search has been done!")
+                #print("No Search has been done!")
+                pass
             self.addHistory(mainWindow.history_list)
             self.downloadPause.setEnabled(False)
             self.download_thread.stop()
@@ -2401,7 +2402,7 @@ class Ui_MainWindow(object):
                     else:
                         file['type'] = f"{file['type'][1:].upper()} File"
                 except Exception as e:
-                    print("Error due to: ", e)
+                    #print("Error due to: ", e)
                     mainWindow.pushNotification(
                         f"Error While Sorting Media Files from File Type. {e}")
                 self.fileTypeLabel.setText(str(file["type"]))
@@ -2412,7 +2413,7 @@ class Ui_MainWindow(object):
                     QCoreApplication.translate("MainWindow", u"Redirects Current File To Media Player", None))
             self.endOfFile()
         except Exception as e:
-            print("Error occured in self.addFiles() due to: ", e)
+            #print("Error occured in self.addFiles() due to: ", e)
             mainWindow.pushNotification(
                 f"Internal Error Occured in self.addFiles() Due to: {e}")
 
@@ -2423,8 +2424,8 @@ class Ui_MainWindow(object):
         try:
             self.filePlayBtnMapsFile.clear()
         except Exception as e:
-            print(
-                "Attribute Error Due to No Files Found! or Empty Files List! Exception: ", e)
+            #print("Attribute Error Due to No Files Found! or Empty Files List! Exception: ", e)
+            pass
         self.endOfFilesBtn = QPushButton(self.filesScrollAreaContents)
         self.endOfFilesBtn.setObjectName(u"endOfFilesBtn")
         sizePolicy.setHeightForWidth(

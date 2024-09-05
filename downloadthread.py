@@ -14,7 +14,7 @@ def convert_size(size_bytes):
         s = round(size_bytes / (1024 ** i), 2)
         return f"{s} {size_name[i]}"
     except Exception as e:
-        print("Error in conversion due to:", e)
+        #print("Error in conversion due to:", e)
         return "--"
 
 
@@ -65,7 +65,7 @@ class DownloadThread(QThread):
             'subtitleslangs': ['en', 'hin'],
             'quiet': True,
             'logger': self.MyLogger(self.mainwindow),
-            'verbose': True
+            'verbose': False
         }
         if self.extension != 'default':
             ydl_opts['postprocessors'] = [
@@ -92,8 +92,6 @@ class DownloadThread(QThread):
             self.quit()
 
     def _emit_progress(self, d):
-        print(d.get('fragment_index', 0))
-        print(d.get('fragment_count', 1))
         verbose = {
             'downloaded': convert_size(d['downloaded_bytes']),
             'progress': (d['downloaded_bytes'] / d.get('total_bytes') or d.get('total_bytes_estimate')) * 100 if ((d.get('fragment_index', 0) == 0) and (d.get('fragment_count', 1) == 1)) else (d.get('fragment_index', 0) / d.get('fragment_count', 1)) * 100,
@@ -112,7 +110,7 @@ class DownloadThread(QThread):
         if self.mainwindow:
             self.mainwindow.pushNotification(error_message, 25)
             self.mainwindow.ui.currentInfoLabel.setText(f"ERROR! {e}")
-        print("Download Error:", e)
+        #print("Download Error:", e)
 
     def _check_pause(self):
         self._mutex.lock()
@@ -141,7 +139,7 @@ class DownloadThread(QThread):
             self.mainwindow = mainwindow
 
         def log_message(self, level, msg):
-            print(f"{level}: {msg}")
+            #print(f"{level}: {msg}")
             if self.mainwindow:
                 clean_msg = re.sub(r'\x1B[@-_][0-?]*[ -/]*[@-~]', '', msg)
                 self.mainwindow.ui.currentInfoLabel.setText(clean_msg)

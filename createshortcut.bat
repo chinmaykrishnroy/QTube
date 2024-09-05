@@ -2,7 +2,7 @@
 setlocal
 
 :: Define paths
-set "TARGET_PATH=%~dp0run.bat"  :: Path to the batch file you want to create a shortcut for
+set "TARGET_PATH=%~dp0quickrun.bat"  :: Path to the batch file you want to create a shortcut for
 set "ICON_PATH=%~dp0youtube.ico" :: Path to the icon file in the current directory
 set "SHORTCUT_NAME=QTube"
 set "SHORTCUT_PATH=%~dp0%SHORTCUT_NAME%.lnk"

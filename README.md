@@ -163,27 +163,14 @@ git clone https://github.com/chinmaykrishnroy/QTube.git
 cd QTube
 ```
 
-2. **Activate the Virtual Environment (venv):**
-   If using Windows, run:
-
-```
-venv\Scripts\activate
-```
-
-If using macOS or Linux, run:
-
-```
-source venv/bin/activate
-```
-
-3. **Run the Application:**
+2. **Run the Script:**
    Execute the run script to start QTube:
 
 ```
 run.bat
 ```
 
-4. **Usage:**
+3. **Usage:**
 
 - **Download YouTube Videos:** Use the YouTube downloader feature to download videos.
 - **Play Media:** Utilize the integrated media player to play downloaded videos or other media files.
@@ -191,7 +178,7 @@ run.bat
 - **Organize Media:** Add media files to playlists and manage your media library.
 - **Track History:** Access the download history to view previously downloaded media and their playback states.
 
-5. **Close the Application:**
+4. **Close the Application:**
    To exit QTube, simply close the application window or use any provided exit functionality within the UI.
 
 ## Troubleshooting

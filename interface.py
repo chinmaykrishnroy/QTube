@@ -11,6 +11,7 @@ from downloadthread import DownloadThread
 from elidedlabel import ElidedLabel
 from imagedownloaderthread import ImageDownloader
 from releasetoseekslider import SeekSlider
+from sliderasprogressbar import ProgressbarSlider
 from resizableiconbutton import ResizableIconButton
 
 
@@ -2017,7 +2018,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_downloadProgressFrame.addWidget(
             self.currentDownloadedLabel)
 
-        self.downloadProgressSlider = QSlider(self.downloadProgressFrame)
+        self.downloadProgressSlider = ProgressbarSlider(
+            self.downloadProgressFrame)
         self.downloadProgressSlider.setObjectName(u"downloadProgressSlider")
         self.downloadProgressSlider.setMinimumSize(QSize(240, 0))
         self.downloadProgressSlider.setFocusPolicy(Qt.NoFocus)

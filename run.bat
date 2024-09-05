@@ -1,35 +1,36 @@
 @echo off
-REM Check if Python is installed
-python --version >nul 2>&1
+setlocal
+
+:: Get the absolute path of the current directory
+set "PROJECT_DIR=%~dp0"
+cd /d "%PROJECT_DIR%"
+
+:: Check if Python is installed
+where /q python
 if errorlevel 1 (
-    echo Python is not installed. Please install Python and try again.
-    timeout /t 3
-    exit /b
+    echo Python not found. Please install Python to continue.
+    exit /b 1
 )
 
-REM Check if the venv package is available
-python -c "import venv" >nul 2>&1
-if errorlevel 1 (
-    echo venv package is not available. Installing venv...
-    pip install virtualenv
-    if errorlevel 1 (
-        echo Failed to install virtualenv. Please check your Python and pip installation.
-        timeout /t 3
-        exit /b
-    )
-)
+:: Set the virtual environment directory
+set "VENV_DIR=%PROJECT_DIR%venv"
 
-REM Check if the virtual environment exists
-if not exist .venv (
+:: Check if the virtual environment already exists
+if not exist "%VENV_DIR%\Scripts\python.exe" (
     echo Creating virtual environment...
-    python -m venv .venv
+    python -m venv "%VENV_DIR%"
 )
 
-REM Activate the virtual environment and install packages
-call .venv\Scripts\activate.bat
-pip install PyQt5==5.15.11 yt-dlp==2024.8.6 youtube-search-python==1.6.6
-cls
-echo Starting QTube...
-powershell -command "$host.ui.RawUI.WindowTitle=''; (new-object -com shell.application).minimizeall()" >nul 2>&1
-python main.py
-call .venv\Scripts\deactivate.bat
+:: Activate the virtual environment
+call "%VENV_DIR%\Scripts\activate.bat"
+
+:: Upgrade pip and install the required packages
+python -m pip install -r "%PROJECT_DIR%requirements.txt" --no-cache-dir
+
+:: Run the main Python script
+python "%PROJECT_DIR%main.py"
+
+:: Deactivate the virtual environment
+deactivate
+
+endlocal

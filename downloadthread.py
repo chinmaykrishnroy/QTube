@@ -92,9 +92,11 @@ class DownloadThread(QThread):
             self.quit()
 
     def _emit_progress(self, d):
+        print(d.get('fragment_index', 0))
+        print(d.get('fragment_count', 1))
         verbose = {
             'downloaded': convert_size(d['downloaded_bytes']),
-            'progress': (d.get('fragment_index', 0) / d.get('fragment_count', 1)) * 100,
+            'progress': (d['downloaded_bytes'] / d.get('total_bytes') or d.get('total_bytes_estimate')) * 100 if ((d.get('fragment_index', 0) == 0) and (d.get('fragment_count', 1) == 1)) else (d.get('fragment_index', 0) / d.get('fragment_count', 1)) * 100,
             'size': convert_size(d.get('total_bytes') or d.get('total_bytes_estimate')),
             'eta': format_time(d.get('eta')),
             'speed': convert_size(d.get('speed')),

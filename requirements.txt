@@ -1,0 +1,3 @@
+PyQt5==5.15.11
+youtube-search-python==1.6.6
+yt-dlp

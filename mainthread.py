@@ -198,6 +198,7 @@ class MainWindow(QMainWindow):
             2000, lambda: self.ui.mainAppStack.setCurrentIndex(self.current_stack))
 
     def updateDots(self):
+        self.saveState()
         if len(self.dots) < 3:
             self.dots += "."
         else:
@@ -551,6 +552,7 @@ class MainWindow(QMainWindow):
     def startVideoSearch(self, query):
         if self.internet_connected:
             self.ui.searchBtn.setEnabled(False)
+            self.dots_timer.start(500)
             self.ui.mainAppStack.setCurrentIndex(1)
             self.search_thread = SearchThread(query, self)
             self.search_thread.search_finished.connect(self.addVideo)
@@ -566,6 +568,7 @@ class MainWindow(QMainWindow):
         self.search_thread.wait()
         self.search_thread.deleteLater()
         self.ui.mainAppStack.setCurrentIndex(0)
+        self.dots_timer.stop()
 
     def handlefilePlayBtnClick(self, path):
         #print("Clicked on: ", path)

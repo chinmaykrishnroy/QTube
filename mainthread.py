@@ -4,7 +4,6 @@ import random
 import re
 import sys
 import webbrowser
-import logging
 import res_rc
 
 from PyQt5.QtCore import QPropertyAnimation, QEasingCurve, QUrl
@@ -18,7 +17,7 @@ from internetcheckerthread import InternetChecker, SignalEmitter
 from mediaplayerthread import MediaPlayer
 from searchthread import SearchThread
 
-logging.basicConfig(level=logging.ERROR)
+sys.stderr = open(os.devnull, 'w')
 
 
 class MainWindow(QMainWindow):

@@ -57,6 +57,7 @@ if errorlevel 1 (
     )
 )
 
+cls
 :: Run the main Python script
 python "%PROJECT_DIR%main.py"
 

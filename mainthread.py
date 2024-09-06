@@ -17,7 +17,6 @@ from internetcheckerthread import InternetChecker, SignalEmitter
 from mediaplayerthread import MediaPlayer
 from searchthread import SearchThread
 
-sys.stderr = open(os.devnull, 'w')
 
 
 class MainWindow(QMainWindow):

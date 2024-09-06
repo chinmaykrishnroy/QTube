@@ -618,7 +618,7 @@ class MainWindow(QMainWindow):
             'default_download_directory': self.default_download_directory,
             'dark_theme': self.dark_theme,
             'allow_random_initial_query': self.allow_random_initial_query,
-            'current_stack': self.ui.mainAppStack.currentIndex(),
+            'current_stack': 0 if ((self.ui.mainAppStack.currentIndex() == 1 ) or (self.ui.mainAppStack.currentIndex() == 2 )) else self.ui.mainAppStack.currentIndex(),
             'current_volume': self.current_volume,
             'default_volume_index': self.ui.defaultVolumeComboBox.currentIndex(),
             'default_audio_extension_index': self.ui.audioExtensionComboBox.currentIndex(),

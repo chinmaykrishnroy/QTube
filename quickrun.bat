@@ -25,6 +25,7 @@ if not exist "%VENV_DIR%\Scripts\python.exe" (
 :: Activate the virtual environment
 call "%VENV_DIR%\Scripts\activate.bat"
 
+cls
 :: Run the main Python script
 python "%PROJECT_DIR%main.py"
 

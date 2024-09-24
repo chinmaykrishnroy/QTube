@@ -2608,7 +2608,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate(
-            "MainWindow", u"QTube: Downloader & Player", None))
+            "MainWindow", u"QTube", None))
         # if QT_CONFIG(tooltip)
         self.menuToggleBtn.setToolTip(QCoreApplication.translate(
             "MainWindow", u"Toggle Menu Bar", None))

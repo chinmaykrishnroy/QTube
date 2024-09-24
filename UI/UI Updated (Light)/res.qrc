@@ -543,8 +543,4 @@
     <file>icons/zoom-in.svg</file>
     <file>icons/zoom-out.svg</file>
   </qresource>
-  <qresource prefix="gif">
-    <file>catDark.gif</file>
-    <file>catLight.gif</file>
-  </qresource>
 </RCC>

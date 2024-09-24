@@ -3,7 +3,7 @@ setlocal
 
 :: Define paths
 set "TARGET_PATH=%~dp0quickrun.bat"   :: Path to the batch file you want to hide and run
-set "ICON_PATH=%~dp0youtube.ico"      :: Path to the icon file in the current directory
+set "ICON_PATH=%~dp0icon"      :: Path to the icon file in the current directory
 set "SHORTCUT_NAME=QTube"
 set "SHORTCUT_PATH=%~dp0%SHORTCUT_NAME%.lnk"
 set "VBS_PATH=%~dp0hideWindowsTerminal.vbs"  :: Path to the external VBS script

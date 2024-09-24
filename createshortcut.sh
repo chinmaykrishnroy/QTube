@@ -3,7 +3,7 @@ set -e
 
 # Define paths
 TARGET_PATH="$(dirname "$(readlink -f "$0")")/quickrun.sh"  # Path to the script to create a shortcut for
-ICON_PATH="$(dirname "$(readlink -f "$0")")/youtube.ico"     # Path to the icon file
+ICON_PATH="$(dirname "$(readlink -f "$0")")/icon"     # Path to the icon file
 SHORTCUT_NAME="QTube"
 SHORTCUT_PATH="$HOME/Desktop/$SHORTCUT_NAME.desktop"         # Shortcut on the Desktop
 

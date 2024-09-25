@@ -13,3 +13,11 @@ class SeekSlider(QSlider):
             self.setValue(int(value))
             self.sliderMoved.emit(int(value))
         super().mousePressEvent(event)
+
+    def wheelEvent(self, event):
+        delta = event.angleDelta().y()
+        step = 1
+        if delta > 0: self.setValue(self.value() + step)
+        else: self.setValue(self.value() - step)
+        self.sliderMoved.emit(self.value())
+        super().wheelEvent(event)

@@ -8,8 +8,7 @@ class SeekSlider(QSlider):
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
-            value = self.minimum() + ((self.maximum() - self.minimum())
-                                      * event.x()) / self.width()
+            value = self.minimum() + ((self.maximum() - self.minimum())* event.x()) / self.width()
             self.setValue(int(value))
             self.sliderMoved.emit(int(value))
         super().mousePressEvent(event)

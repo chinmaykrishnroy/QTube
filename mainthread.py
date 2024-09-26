@@ -127,6 +127,10 @@ class MainWindow(QMainWindow):
         self.reset_placeholder.setSingleShot(True)
         self.reset_placeholder.timeout.connect(self.resetPlacehlder)
 
+        self.notification_timer = QTimer(self)
+        self.notification_timer.setSingleShot(True)
+        self.notification_timer.timeout.connect(self.hideNotificationTab)
+
         self.sideBarAnimation = QPropertyAnimation(
             self.ui.leftMenuContainer, b"minimumWidth")
         self.sideBarAnimation.setDuration(self.animation_time)
@@ -415,6 +419,11 @@ class MainWindow(QMainWindow):
 
     def pushNotification(self, notification_message, notification_volume=25, tone=True):
         # self.ui.notificationFrame.hide()
+        if self.notification_timer.isActive():
+            self.notificationAnimation.stop()
+            self.ui.notificationFrame.hide()
+            self.notification_timer.stop()
+
         if self.allow_notification_popups:
             if tone:
                 self.playSound('%s/sound/notification.mp3' %
@@ -426,8 +435,8 @@ class MainWindow(QMainWindow):
             self.ui.notificationLabel.setText(notification_message)
             QTimer.singleShot(int(1.5 * self.animation_time),
                               lambda: self.ui.notificationFrame.show())
-            QTimer.singleShot(
-                int(self.notification_popup_timeout), self.hideNotificationTab)
+            self.notification_timer.start(int(self.notification_popup_timeout))
+            # QTimer.singleShot(int(self.notification_popup_timeout), self.hideNotificationTab)
 
     def hideNotificationTab(self):
         self.notificationAnimation.setStartValue(

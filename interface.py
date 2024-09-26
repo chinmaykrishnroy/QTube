@@ -1362,7 +1362,6 @@ class Ui_MainWindow(object):
         self.mediaVolumeSlider.setObjectName(u"mediaVolumeSlider")
         self.mediaVolumeSlider.setMinimumSize(QSize(64, 22))
         self.mediaVolumeSlider.setMaximumSize(QSize(16777215, 24))
-        self.mediaVolumeSlider.setStyleSheet(u"")
         self.mediaVolumeSlider.setOrientation(Qt.Horizontal)
 
         self.horizontalLayout_mediaButtonsFrame.addWidget(

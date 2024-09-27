@@ -506,12 +506,6 @@ QScrollBar::sub-line {
     border-radius: 2px;
 }
 
-#downloadsMainLabel QLabel {
-    font-size: 28px;
-    padding-left: 8px;
-    padding-top: 4px;
-}
-
 #qualitySelectWidget QRadioButton {
     font-size: 11px;
     color: #000000;
@@ -664,8 +658,8 @@ QScrollBar::sub-line {
 }
 
 #fileTypeFrame QLabel {
-    font-size: 14px;
-    margin: 0px 4px;
+	font-size:14px;
+	margin: 8px 4px;
 }
 
 #files QPushButton:hover {

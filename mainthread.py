@@ -17,7 +17,9 @@ from internetcheckerthread import InternetChecker, SignalEmitter
 from mediaplayerthread import MediaPlayer
 from searchthread import SearchThread
 
-
+def getBasePath():
+    if hasattr(sys, '_MEIPASS'): return sys._MEIPASS
+    else: return os.path.dirname(os.path.abspath(__file__))
 
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
@@ -37,7 +39,7 @@ class MainWindow(QMainWindow):
 
         self.soundPlayer = QMediaPlayer()
         # self.sound_enabled = True
-        self.playSound('%s/sound/drop.wav' % os.getcwd(), 50)
+        self.playSound('%s/sound/drop.wav' % getBasePath(), 50)
 
         # self.current_stack = 0
         self.setting_menu_visible = False
@@ -241,28 +243,28 @@ class MainWindow(QMainWindow):
             self.pushNotification("Notification Sounds Disabled")
 
     def showSearchStack(self):
-        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
+        self.playSound('%s/sound/tap2.mp3' % getBasePath())
         if self.ui.mainAppStack.currentIndex() != 0:
             self.ui.mainAppStack.setCurrentIndex(0)
         else:
             self.toggleSidebar()
 
     def showDownloadStack(self):
-        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
+        self.playSound('%s/sound/tap2.mp3' % getBasePath())
         if self.ui.mainAppStack.currentIndex() != 3:
             self.ui.mainAppStack.setCurrentIndex(3)
         else:
             self.toggleSidebar()
 
     def showFileStack(self):
-        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
+        self.playSound('%s/sound/tap2.mp3' % getBasePath())
         if self.ui.mainAppStack.currentIndex() != 4:
             self.ui.mainAppStack.setCurrentIndex(4)
         else:
             self.toggleSidebar()
 
     def showHistoryStack(self):
-        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
+        self.playSound('%s/sound/tap2.mp3' % getBasePath())
         if self.ui.mainAppStack.currentIndex() != 5:
             self.ui.mainAppStack.setCurrentIndex(5)
         else:
@@ -286,14 +288,14 @@ class MainWindow(QMainWindow):
         self.pushNotification('Files Refreshed')
 
     def toggleMaximized(self):
-        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
+        self.playSound('%s/sound/tap2.mp3' % getBasePath())
         if self.isMaximized():
             self.showNormal()
         else:
             self.showMaximized()
 
     def setMinimized(self):
-        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
+        self.playSound('%s/sound/tap2.mp3' % getBasePath())
         self.showMinimized()
 
     def updateInternetStatus(self, status):
@@ -319,7 +321,7 @@ class MainWindow(QMainWindow):
 
     def toggleSidebar(self):
         self.left_menu_container_visible ^= True
-        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
+        self.playSound('%s/sound/tap2.mp3' % getBasePath())
         if self.left_menu_container_visible:
             self.sideBarAnimation.setStartValue(
                 self.ui.leftMenuContainer.width())
@@ -335,7 +337,7 @@ class MainWindow(QMainWindow):
         self.sideBarAnimation.start()
 
     def hidesettingHelpMenu(self):
-        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
+        self.playSound('%s/sound/tap2.mp3' % getBasePath())
         self.settingHelpAnimation.setEndValue(0)
         self.settingHelpAnimation.start()
         self.ui.centerMenuSubContainer.hide()
@@ -344,7 +346,7 @@ class MainWindow(QMainWindow):
         self.setting_menu_visible = False
 
     def showSettingMenu(self):
-        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
+        self.playSound('%s/sound/tap2.mp3' % getBasePath())
         if self.help_menu_visible and not self.setting_menu_visible:
             self.ui.centerMenuSubContainer.show()
             self.ui.settingHelpMenu.setCurrentIndex(0)
@@ -370,7 +372,7 @@ class MainWindow(QMainWindow):
             self.help_menu_visible = False
 
     def showHelpMenu(self):
-        self.playSound('%s/sound/tap2.mp3' % os.getcwd())
+        self.playSound('%s/sound/tap2.mp3' % getBasePath())
         if self.setting_menu_visible and not self.help_menu_visible:
             self.ui.centerMenuSubContainer.show()
             self.ui.settingHelpMenu.setCurrentIndex(1)
@@ -427,7 +429,7 @@ class MainWindow(QMainWindow):
         if self.allow_notification_popups:
             if tone:
                 self.playSound('%s/sound/notification.mp3' %
-                               os.getcwd(), notification_volume)
+                               getBasePath(), notification_volume)
             self.notificationAnimation.setStartValue(0)
             self.notificationAnimation.setEndValue(49)
             self.notificationAnimation.start()
@@ -483,8 +485,7 @@ class MainWindow(QMainWindow):
         try:
             with open(theme_path, "r") as file:
                 self.setStyleSheet(file.read())
-            self.initGif = QMovie(u":/gif/catDark.gif" if theme_path ==
-                                  "themes/dark.theme" else u":/gif/catLight.gif")
+            self.initGif = QMovie(u":/gif/catDark.gif" if self.dark_theme else u":/gif/catLight.gif")
             self.ui.initIcon.setMovie(self.initGif)
             self.ui.loadingIcon.setMovie(self.initGif)
             self.initGif.start()
@@ -506,14 +507,14 @@ class MainWindow(QMainWindow):
             self.ui.darkModeBtn.setText("Dark")
             self.ui.darkModeBtn.setIcon(QIcon(':/icons/icons/moon.svg'))
             self.ui.themeBtn.setIcon(QIcon(':/icons/icons/cil-lightbulb.png'))
-            self.loadTheme("themes/dark.theme")
+            self.loadTheme("%s/themes/dark.theme" % getBasePath())
             self.initGif = QMovie(u":/gif/catDark.gif")
             self.pushNotification("Theme Changed to Dark!")
         else:
             self.ui.darkModeBtn.setText("Light")
             self.ui.darkModeBtn.setIcon(QIcon(':/icons/icons/sun.svg'))
             self.ui.themeBtn.setIcon(QIcon(':/icons/icons/cil-moon.png'))
-            self.loadTheme("themes/light.theme")
+            self.loadTheme("%s/themes/light.theme" % getBasePath())
             self.initGif = QMovie(u":/gif/catLight.gif")
             self.pushNotification("Theme Changed to Light!")
         self.ui.loadingIcon.setMovie(self.initGif)
@@ -712,8 +713,7 @@ class MainWindow(QMainWindow):
                 self.left_menu_container_min_width)
         if self.center_menu_container_visible:
             self.ui.centerMenuSubContainer.show()
-        self.loadTheme(
-            "themes/dark.theme") if self.dark_theme else self.loadTheme("themes/light.theme")
+        self.loadTheme("%s/themes/dark.theme" % getBasePath()) if self.dark_theme else self.loadTheme("%s/themes/light.theme" % getBasePath())
         self.ui.appSoundBtn.setText(
             "Enabled" if self.sound_enabled else "Disabled")
         self.ui.currentInfoLabel.show() if self.logger_visible else self.ui.currentInfoLabel.hide()
@@ -869,7 +869,7 @@ class MainWindow(QMainWindow):
     def closeEvent(self, event):
         self.hide()
         self.saveState()
-        self.playSound('%s/sound/close.mp3' % os.getcwd(), 10)
+        self.playSound('%s/sound/close.mp3' % getBasePath(), 10)
         self.media_player.cleanup_before_exit()
         try:
             self.ui.download_thread.stop()

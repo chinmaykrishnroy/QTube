@@ -2250,84 +2250,68 @@ class Ui_MainWindow(object):
             for file in file_info:
                 self.files = QFrame(self.filesScrollAreaContents)
                 self.files.setObjectName(u"files")
-                sizePolicy.setHeightForWidth(
-                    self.files.sizePolicy().hasHeightForWidth())
+                sizePolicy.setHeightForWidth(self.files.sizePolicy().hasHeightForWidth())
                 self.files.setSizePolicy(sizePolicy)
                 self.files.setMinimumSize(QSize(0, 85))
                 self.files.setMaximumSize(QSize(16777215, 120))
                 self.files.setStyleSheet(u"")
                 self.verticalLayout_files = QVBoxLayout(self.files)
                 self.verticalLayout_files.setSpacing(0)
-                self.verticalLayout_files.setObjectName(
-                    u"verticalLayout_files")
+                self.verticalLayout_files.setObjectName(u"verticalLayout_files")
                 self.verticalLayout_files.setContentsMargins(0, 0, 0, 0)
                 self.fileTitleFrame = QFrame(self.files)
                 self.fileTitleFrame.setObjectName(u"fileTitleFrame")
-                sizePolicy.setHeightForWidth(
-                    self.fileTitleFrame.sizePolicy().hasHeightForWidth())
+                sizePolicy.setHeightForWidth(self.fileTitleFrame.sizePolicy().hasHeightForWidth())
                 self.fileTitleFrame.setSizePolicy(sizePolicy)
-                self.fileTitleFrame.setFrameShape(QFrame.StyledPanel)
-                self.fileTitleFrame.setFrameShadow(QFrame.Raised)
-                self.verticalLayout_fileTitleFrame = QVBoxLayout(
-                    self.fileTitleFrame)
+                self.fileTitleFrame.setFrameShape(QFrame.Shape.StyledPanel)
+                self.fileTitleFrame.setFrameShadow(QFrame.Shadow.Raised)
+                self.verticalLayout_fileTitleFrame = QVBoxLayout(self.fileTitleFrame)
                 self.verticalLayout_fileTitleFrame.setSpacing(0)
-                self.verticalLayout_fileTitleFrame.setObjectName(
-                    u"verticalLayout_fileTitleFrame")
-                self.verticalLayout_fileTitleFrame.setContentsMargins(
-                    0, 0, 0, 0)
-                self.fileTitleLabel = ElidedLabel(self.fileTitleFrame)
+                self.verticalLayout_fileTitleFrame.setObjectName(u"verticalLayout_fileTitleFrame")
+                self.verticalLayout_fileTitleFrame.setContentsMargins(0, 0, 0, 0)
+                self.fileTitleLabel = QLabel(self.fileTitleFrame)
                 self.fileTitleLabel.setObjectName(u"fileTitleLabel")
                 self.fileTitleLabel.setMinimumSize(QSize(0, 0))
                 self.fileTitleLabel.setStyleSheet(u"")
                 self.fileTitleLabel.setWordWrap(False)
 
-                self.verticalLayout_fileTitleFrame.addWidget(
-                    self.fileTitleLabel)
+                self.verticalLayout_fileTitleFrame.addWidget(self.fileTitleLabel)
 
                 self.fileInfoFrame = QFrame(self.fileTitleFrame)
                 self.fileInfoFrame.setObjectName(u"fileInfoFrame")
                 self.fileInfoFrame.setMinimumSize(QSize(0, 26))
                 self.fileInfoFrame.setMaximumSize(QSize(16777215, 16777215))
-                self.fileInfoFrame.setFrameShape(QFrame.StyledPanel)
-                self.fileInfoFrame.setFrameShadow(QFrame.Raised)
-                self.horizontalLayout_fileInfoFrame = QHBoxLayout(
-                    self.fileInfoFrame)
+                self.fileInfoFrame.setFrameShape(QFrame.Shape.StyledPanel)
+                self.fileInfoFrame.setFrameShadow(QFrame.Shadow.Raised)
+                self.horizontalLayout_fileInfoFrame = QHBoxLayout(self.fileInfoFrame)
                 self.horizontalLayout_fileInfoFrame.setSpacing(0)
-                self.horizontalLayout_fileInfoFrame.setObjectName(
-                    u"horizontalLayout_fileInfoFrame")
-                self.horizontalLayout_fileInfoFrame.setContentsMargins(
-                    0, 0, 0, 0)
+                self.horizontalLayout_fileInfoFrame.setObjectName(u"horizontalLayout_fileInfoFrame")
+                self.horizontalLayout_fileInfoFrame.setContentsMargins(0, 0, 0, 0)
                 self.fileSizeLabel = QLabel(self.fileInfoFrame)
                 self.fileSizeLabel.setObjectName(u"fileSizeLabel")
                 self.fileSizeLabel.setMinimumSize(QSize(120, 0))
 
-                self.horizontalLayout_fileInfoFrame.addWidget(
-                    self.fileSizeLabel)
+                self.horizontalLayout_fileInfoFrame.addWidget(self.fileSizeLabel)
 
-                self.horizontalSpacer_18 = QSpacerItem(
-                    40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+                self.horizontalSpacer_18 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-                self.horizontalLayout_fileInfoFrame.addItem(
-                    self.horizontalSpacer_18)
+                self.horizontalLayout_fileInfoFrame.addItem(self.horizontalSpacer_18)
 
                 self.fileExtensionLabel = QLabel(self.fileInfoFrame)
                 self.fileExtensionLabel.setObjectName(u"fileExtensionLabel")
                 self.fileExtensionLabel.setMinimumSize(QSize(120, 0))
 
-                self.horizontalLayout_fileInfoFrame.addWidget(
-                    self.fileExtensionLabel)
+                self.horizontalLayout_fileInfoFrame.addWidget(self.fileExtensionLabel)
 
-                self.horizontalSpacer_15 = QSpacerItem(
-                    40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+                self.horizontalSpacer_15 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-                self.horizontalLayout_fileInfoFrame.addItem(
-                    self.horizontalSpacer_15)
+                self.horizontalLayout_fileInfoFrame.addItem(self.horizontalSpacer_15)
 
                 self.horizontalLayout_fileInfoFrame.setStretch(1, 1)
                 self.horizontalLayout_fileInfoFrame.setStretch(3, 4)
 
-                self.verticalLayout_fileTitleFrame.addWidget(
-                    self.fileInfoFrame)
+                self.verticalLayout_fileTitleFrame.addWidget(self.fileInfoFrame)
+
 
                 self.verticalLayout_files.addWidget(self.fileTitleFrame)
 
@@ -2335,21 +2319,17 @@ class Ui_MainWindow(object):
                 self.fileTypeFrame.setObjectName(u"fileTypeFrame")
                 self.fileTypeFrame.setMinimumSize(QSize(0, 34))
                 self.fileTypeFrame.setMaximumSize(QSize(16777215, 16777215))
-                self.fileTypeFrame.setFrameShape(QFrame.StyledPanel)
-                self.fileTypeFrame.setFrameShadow(QFrame.Raised)
-                self.horizontalLayout_fileTypeFrame = QHBoxLayout(
-                    self.fileTypeFrame)
+                self.fileTypeFrame.setFrameShape(QFrame.Shape.StyledPanel)
+                self.fileTypeFrame.setFrameShadow(QFrame.Shadow.Raised)
+                self.horizontalLayout_fileTypeFrame = QHBoxLayout(self.fileTypeFrame)
                 self.horizontalLayout_fileTypeFrame.setSpacing(0)
-                self.horizontalLayout_fileTypeFrame.setObjectName(
-                    u"horizontalLayout_fileTypeFrame")
-                self.horizontalLayout_fileTypeFrame.setContentsMargins(
-                    0, 0, 0, 0)
+                self.horizontalLayout_fileTypeFrame.setObjectName(u"horizontalLayout_fileTypeFrame")
+                self.horizontalLayout_fileTypeFrame.setContentsMargins(0, 0, 0, 0)
                 self.filePlayBtn = QPushButton(self.fileTypeFrame)
                 self.filePlayBtn.setObjectName(u"filePlayBtn")
                 self.filePlayBtn.setMinimumSize(QSize(35, 35))
                 icon23 = QIcon()
-                icon23.addFile(u":/icons/icons/play.svg",
-                               QSize(), QIcon.Normal, QIcon.Off)
+                icon23.addFile(u":/icons/icons/play.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
                 self.filePlayBtn.setIcon(icon23)
                 self.filePlayBtn.setIconSize(QSize(30, 30))
 
@@ -2359,26 +2339,22 @@ class Ui_MainWindow(object):
                 self.fileTypeLabel.setObjectName(u"fileTypeLabel")
                 self.fileTypeLabel.setStyleSheet(u"")
 
-                self.horizontalLayout_fileTypeFrame.addWidget(
-                    self.fileTypeLabel, 0, Qt.AlignLeft)
+                self.horizontalLayout_fileTypeFrame.addWidget(self.fileTypeLabel, 0, Qt.AlignmentFlag.AlignLeft)
 
-                self.horizontalSpacer_17 = QSpacerItem(
-                    40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+                self.horizontalSpacer_17 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-                self.horizontalLayout_fileTypeFrame.addItem(
-                    self.horizontalSpacer_17)
+                self.horizontalLayout_fileTypeFrame.addItem(self.horizontalSpacer_17)
 
                 self.fileTimeLabel = QLabel(self.fileTypeFrame)
                 self.fileTimeLabel.setObjectName(u"fileTimeLabel")
 
-                self.horizontalLayout_fileTypeFrame.addWidget(
-                    self.fileTimeLabel)
+                self.horizontalLayout_fileTypeFrame.addWidget(self.fileTimeLabel)
 
-                self.verticalLayout_files.addWidget(
-                    self.fileTypeFrame, 0, Qt.AlignLeft)
 
-                self.verticalLayout_filesScrollAreaContents.addWidget(
-                    self.files)
+                self.verticalLayout_files.addWidget(self.fileTypeFrame, 0, Qt.AlignmentFlag.AlignLeft)
+
+
+                self.verticalLayout_filesScrollAreaContents.addWidget(self.files)
 
                 self.filePlayBtn.setText("")
                 self.filePlayBtnMapsFile[self.filePlayBtn] = file['path']

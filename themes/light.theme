@@ -7,6 +7,20 @@
     font-size: 16px;
 }
 
+QToolTip {
+	color: #333;
+	background-color: #f8f8f2;
+	border: 1px solid #CCC;
+	background-image: none;
+	background-position: left center;
+    background-repeat: no-repeat;
+	border: none;
+	/* border-left: 2px solid rgb(255, 121, 198); */
+	text-align: left;
+	padding-left: 8px;
+	margin: 0px;
+}
+
 /*216869*/
 /*CCE3DE*/
 

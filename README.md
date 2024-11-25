@@ -34,6 +34,8 @@ QTube is a complete YouTube downloader application with a contemporary GUI in Py
 ![Screenshot 2024-06-20 114800](https://github.com/chinmaykrishnroy/QTube/assets/65699140/44e85d3f-ebe6-497b-b9a6-361fc7dcbe74)
 ![Screenshot 2024-06-20 114642](https://github.com/chinmaykrishnroy/QTube/assets/65699140/4804f57b-accc-4bd2-8016-9995bd374593)
 ![image](https://github.com/user-attachments/assets/b1b5a326-3796-479c-b484-dba8b1a74537)
+![qtuub](https://github.com/user-attachments/assets/92964224-ab39-4e7f-9e84-faf342adc6bb)
+
 
 
 ## App Structure
